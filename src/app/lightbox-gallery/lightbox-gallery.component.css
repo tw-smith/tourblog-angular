@@ -1,0 +1,84 @@
+@import "~swiper/css/bundle";
+
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.masonry {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.masonry figure {
+    height: 250px;
+    line-height: 150px;
+    background: #EC985A;
+    margin: 5px;
+    /* flex: 1 0 auto; */
+    /* justify-content: space-around;
+    align-content: space-around; */
+}
+
+.masonry img {
+    height: 100%;
+}
+
+
+
+.lightbox-close {
+    z-index: 2;
+    position: absolute;
+    top: 1vh;
+    right: 1vw;
+    font-size: 30px;
+    color: black;
+    padding: 20px;
+}
+
+.lightbox-close:hover {
+    color: red;
+}
+   
+.disabled-scroll {
+    overflow: hidden;
+}
+
+/* .swiper-slide img {
+    opacity: 1;
+} */
+
+.lightbox-modal {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255, 0.9);
+    /* overflow-x: hidden;
+    overflow-y: hidden; */
+    /* z-index: 1000; */
+}
+
+/* .lightbox-content {
+    /* opacity: 1; */
+    /* z-index: 1001; */
+ */
+
+/* .open {
+    opacity: 1;
+} */
+
+
+.lightbox-container {
+    display: flex;
+    flex: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}

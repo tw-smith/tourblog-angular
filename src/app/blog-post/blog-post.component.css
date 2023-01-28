@@ -1,0 +1,32 @@
+.post-title {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+.post-subtitle {
+    font-weight: 500;
+    font-style: italic;
+    color: darkgray;
+}
+
+.textcontainer {
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.lightBox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.lightBox__item {
+    margin: 10px;
+    max-height: 150px;
+}

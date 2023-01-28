@@ -1,0 +1,36 @@
+
+
+<div *ngIf="swiperOn">
+    <div class="lightbox-modal">
+        <div class="lightbox-close" (click)="closeSwiper()">X</div>
+        <swiper [config]="config" class="mySwiper">
+            <ng-template swiperSlide *ngFor="let photo of photos">
+                <img class="lightbox-content" src="http://127.0.0.1:1337{{photo.formats.large.url}}">
+            </ng-template>
+        </swiper>
+    </div>
+
+
+
+
+
+
+
+        <!-- <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div> -->
+    
+</div>
+
+
+
+    <div class="masonry">
+        <!-- <div  *ngFor="let photo of photos">
+            {{photo.id}}
+        </div> -->
+        <figure *ngFor="let photo of photos">
+            <img src="http://127.0.0.1:1337{{photo.formats.small.url}}" (click)="initSwiper()">
+        </figure>
+        
+    </div>
+
+

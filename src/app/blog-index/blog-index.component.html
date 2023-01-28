@@ -1,0 +1,12 @@
+<div class="blog-covers">
+    <!-- <a class="blog-cover" *ngFor="let post of posts" routerLink="/post/{{post.title.replace(' ', '-') | lowercase}}"> -->
+        <a class="blog-cover" *ngFor="let post of posts" routerLink="/post/{{post.slug}}">
+            <img src="http://127.0.0.1:1337{{post.coverPhoto}}">
+            <div class="overlay">
+                <div class="overlay__text">
+                    <h2 class="overlay__text_header">{{post.title}}</h2>
+                    <h3 class="overlay__text_subheader">{{formatDate(post.publishedAt)}}</h3>
+                </div>
+            </div>
+    </a>
+</div>

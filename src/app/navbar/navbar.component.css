@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.navbar__title {
+    color: black;
+    font-weight: 800;
+    margin-right: auto;
+}
+
+.navbar__entry {
+    color: grey;
+    font-weight: 400;
+}
+
+.navbar__entry:hover {
+    color: black;
+    transition: 0.75s;
+}
+
+li {
+    margin: 1rem;
+}
+
+.pointer {
+    cursor: pointer;
+}

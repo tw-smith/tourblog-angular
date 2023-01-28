@@ -1,0 +1,17 @@
+<ul class="navbar">
+    <li id=siteTitle class="navbar__title pointer">
+        <p routerLink="/blog">{{siteTitle | uppercase}}</p>
+    </li>
+    <li class="navbar__entry pointer">
+        <p routerLink="/blog">HOME</p>
+    </li>
+    <li class="navbar__entry pointer" *ngFor="let tag of this.tags">
+        <p>{{tag.replace('-', ' ') | uppercase}}</p>
+    </li>
+    <li class="navbar__entry pointer">
+        <p routerLink="/where-am-i">WHERE AM I?</p>
+    </li>
+    <li class="navbar__entry pointer">
+        <p routerLink="contact">CONTACT</p>
+    </li>
+</ul>
