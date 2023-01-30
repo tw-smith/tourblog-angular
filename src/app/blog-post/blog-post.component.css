@@ -1,32 +1,22 @@
-.post-title {
-    font-weight: 800;
-    font-size: 50px;
-}
-
-.post-subtitle {
-    font-weight: 500;
-    font-style: italic;
-    color: darkgray;
-}
-
-.textcontainer {
+.post {
     width: 100%;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-
-.lightBox {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-
+.post__title {
+    font-weight: 800;
+    font-size: 50px;
 }
 
-.lightBox__item {
-    margin: 10px;
-    max-height: 150px;
+.post__subtitle {
+    font-weight: 500;
+    font-style: italic;
+    color: darkgray;
+}
+
+.post__content {
+    color: black;
+    line-height: 1.5rem;
 }

@@ -1,17 +1,20 @@
-<ul class="navbar">
-    <li id=siteTitle class="navbar__title pointer">
-        <p routerLink="/blog">{{siteTitle | uppercase}}</p>
-    </li>
-    <li class="navbar__entry pointer">
-        <p routerLink="/blog">HOME</p>
-    </li>
-    <li class="navbar__entry pointer" *ngFor="let tag of this.tags">
-        <p>{{tag.replace('-', ' ') | uppercase}}</p>
-    </li>
-    <li class="navbar__entry pointer">
-        <p routerLink="/where-am-i">WHERE AM I?</p>
-    </li>
-    <li class="navbar__entry pointer">
-        <p routerLink="contact">CONTACT</p>
-    </li>
-</ul>
+<div class="navbar">
+    <div class="pointer">
+        <p class="navbar__title" routerLink="/blog">{{siteTitle | uppercase}}</p>
+    </div>
+    <ul class="navbar__entries">
+        <li class="navbar__list pointer">
+            <p class="navbar__entry" routerLink="/blog">HOME</p>
+        </li>
+        <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+            <p class="navbar__entry">{{tag.replace('-', ' ') | uppercase}}</p>
+        </li>
+        <li class="navbar__list pointer">
+            <p class="navbar__entry" routerLink="/where-am-i">WHERE AM I?</p>
+        </li>
+        <li class="navbar__list pointer">
+            <p class="navbar__entry" routerLink="contact">CONTACT</p>
+        </li>
+    </ul>
+</div>
+

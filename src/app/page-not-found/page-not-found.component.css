@@ -1,0 +1,17 @@
+.errorSplashImg {
+    width: 100%;
+    position: relative;
+}
+
+.errorSplashImg img {
+    width: 100%;
+}
+
+.errorSplashText {
+    position: absolute;
+    top: 25%;
+    right: 50%;
+    transform: translate(50%);
+    color: white;
+
+}

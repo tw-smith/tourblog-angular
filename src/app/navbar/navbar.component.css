@@ -1,13 +1,25 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    list-style-type: none;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.navbar__entries {
+    display: flex;
+    flex-direction: row;
 }
 
 .navbar__title {
     color: black;
     font-weight: 800;
-    margin-right: auto;
+    margin: 0;
+}
+
+.navbar__list {
+    list-style-type: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .navbar__entry {
@@ -18,10 +30,6 @@
 .navbar__entry:hover {
     color: black;
     transition: 0.75s;
-}
-
-li {
-    margin: 1rem;
 }
 
 .pointer {

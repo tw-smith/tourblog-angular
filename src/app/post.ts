@@ -23,11 +23,15 @@ export interface Post {
 
 export interface Photo {
     id: number,
+    url: string,
     formats: {
         small: {
             url: string
         },
         large: {
+            url: string
+        },
+        xlarge: {
             url: string
         },
     },

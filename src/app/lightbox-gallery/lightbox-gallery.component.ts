@@ -20,6 +20,7 @@ export class LightboxGalleryComponent {
   swiperOn: boolean = false;
 
   config: SwiperOptions = {
+    initialSlide: 1,
     navigation: true,
     keyboard: true, //TODO keyboard nav with arrrow buttons doesnt work
     loop: true,
@@ -31,7 +32,8 @@ export class LightboxGalleryComponent {
     watchSlidesProgress: true
   }
 
-  initSwiper() {
+  initSwiper(i: number) {
+    this.config.initialSlide = i;
     this.swiperOn = true;
     document.getElementsByTagName("body")[0].classList.add("disabled-scroll")
     
