@@ -1,0 +1,53 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+}
+
+.form__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.form__group label {
+    font-weight: bold;
+    margin: 0.2rem;
+    align-self: flex-start;
+}
+
+.form__group textarea {
+    height: 10rem;
+}
+
+.form__item {
+    background-color: white;
+    border-radius: 0.15rem;
+    padding: 0.5rem;
+    width: 90%;
+    margin: 0.2rem;
+}
+
+
+.alert {
+    color: red;
+}
+
+.ng-valid.form__item {
+    border: 2px solid green
+}
+
+.ng-invalid.form__item {
+    border: 2px solid red
+}
+
+.ng-pristine.form__item {
+    border: 1px solid #ccc
+}

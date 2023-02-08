@@ -7,6 +7,7 @@ import { WhereAmIComponent } from './where-am-i/where-am-i.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'posts/all', pathMatch: 'full'},
   { path: 'post/:slug', component: BlogPostComponent },
   { path: 'posts', redirectTo: 'posts/all'},
   { path: 'posts/:tag', component: BlogIndexComponent},

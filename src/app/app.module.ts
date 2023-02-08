@@ -12,7 +12,8 @@ import { LightboxGalleryComponent } from './lightbox-gallery/lightbox-gallery.co
 import { SwiperModule } from 'swiper/angular';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WhereAmIComponent } from './where-am-i/where-am-i.component';
-import { ContactMeComponent } from './contact-me/contact-me.component'
+import { ContactMeComponent } from './contact-me/contact-me.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,13 +24,14 @@ import { ContactMeComponent } from './contact-me/contact-me.component'
     LightboxGalleryComponent,
     PageNotFoundComponent,
     WhereAmIComponent,
-    ContactMeComponent
+    ContactMeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     SwiperModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
