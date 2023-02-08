@@ -8,7 +8,8 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 
 const routes: Routes = [
   { path: 'post/:slug', component: BlogPostComponent },
-  { path: 'blog', component: BlogIndexComponent},
+  { path: 'posts', redirectTo: 'posts/all'},
+  { path: 'posts/:tag', component: BlogIndexComponent},
   { path: 'contact', component: ContactMeComponent},
   { path: 'where-am-i', component: WhereAmIComponent},
   { path: '404', component: PageNotFoundComponent},

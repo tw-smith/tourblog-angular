@@ -1,13 +1,13 @@
 <div class="navbar">
     <div class="pointer">
-        <p class="navbar__title" routerLink="/blog">{{siteTitle | uppercase}}</p>
+        <p class="navbar__title" routerLink="/posts">{{siteTitle | uppercase}}</p>
     </div>
     <ul class="navbar__entries">
         <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="/blog">HOME</p>
+            <p class="navbar__entry" routerLink="/posts">HOME</p>
         </li>
         <li class="navbar__list pointer" *ngFor="let tag of this.tags">
-            <p class="navbar__entry">{{tag.replace('-', ' ') | uppercase}}</p>
+            <p class="navbar__entry" routerLink="/posts/{{tag}}">{{tag.replace('-', ' ') | uppercase}}</p>
         </li>
         <li class="navbar__list pointer">
             <p class="navbar__entry" routerLink="/where-am-i">WHERE AM I?</p>
