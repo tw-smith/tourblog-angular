@@ -35,3 +35,13 @@
 .pointer {
     cursor: pointer;
 }
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img {
+    height: 20px;
+}
