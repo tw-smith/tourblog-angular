@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { WhereAmIComponent } from './where-am-i/where-am-i.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
 import { FormsModule } from '@angular/forms';
+import { ContentFooterComponent } from './content-footer/content-footer.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     PageNotFoundComponent,
     WhereAmIComponent,
     ContactMeComponent,
+    ContentFooterComponent,
   ],
   imports: [
     BrowserModule,
