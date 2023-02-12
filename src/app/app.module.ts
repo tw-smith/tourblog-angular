@@ -16,6 +16,8 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { FormsModule } from '@angular/forms';
 import { ContentFooterComponent } from './content-footer/content-footer.component';
 
+import { LayoutModule } from "@angular/cdk/layout"
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { ContentFooterComponent } from './content-footer/content-footer.componen
     HttpClientModule,
     SwiperModule,
     FormsModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

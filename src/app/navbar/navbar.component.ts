@@ -1,6 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { BlogIndexService } from '../blog-index.service';
 import { PostIndexItem } from '../post';
+ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { distinctUntilChanged } from 'rxjs';
+import { ResponsiveService } from '../responsive.service';
+import { tap } from 'rxjs';
 
 
 
@@ -11,13 +15,41 @@ import { PostIndexItem } from '../post';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private blogIndexService: BlogIndexService) {}
+  constructor(private blogIndexService: BlogIndexService, private breakpointObserver: BreakpointObserver) {}
   @Input() siteTitle!: string;
+
+
+  Breakpoints = Breakpoints;
+  currentBreakpoint: string = '';
+
+  readonly breakpoint$ = this.breakpointObserver
+  .observe([Breakpoints.HandsetPortrait, Breakpoints.WebLandscape])
+  .pipe(
+    distinctUntilChanged()
+  )
+
+  private breakpointChanged() {
+    if(this.breakpointObserver.isMatched(Breakpoints.WebLandscape)) {
+      this.currentBreakpoint = Breakpoints.WebLandscape;
+    } else if (this.breakpointObserver.isMatched(Breakpoints.HandsetPortrait)) {
+      this.currentBreakpoint = Breakpoints.HandsetPortrait
+    }
+   }
+
+   ngOnInit(): void {
+    this.breakpoint$.subscribe(() => this.breakpointChanged())
+    this.getPosts();
+  }
+
+  // .pipe(
+  //   tap(value => console.log("asdas")),
+  //   distinctUntilChanged()
+  // )
+
 
 
   posts: PostIndexItem[] = [];
   tags: string[] = [];
-  desktop = false;
   mobileNavModal = false;
 
    getPosts(): void { //TODO at the moment we make two API calls for post-index, one for navbar tags 
@@ -37,20 +69,11 @@ export class NavbarComponent {
    showMobileNavModal(): void {
       this.mobileNavModal = true;
       let mobileNavModalIcon = document.getElementById("mobileNavModalIcon") as HTMLImageElement
-      mobileNavModalIcon.src = 'assets/icons8-multiply-48.png'
    }
 
    hideMobileNavModal(): void {
     this.mobileNavModal = false;
     let mobileNavModalIcon = document.getElementById("mobileNavModalIcon") as HTMLImageElement
-    mobileNavModalIcon.src = 'assets/icons8-hamburger-menu-48.png'
    }
-
-
-   ngOnInit(): void {
-    this.getPosts();
-  }
-
-
 
 }

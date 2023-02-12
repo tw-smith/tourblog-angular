@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BlogIndexService } from '../blog-index.service';
 import { Post, PostIndexItem } from '../post';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { distinctUntilChanged } from 'rxjs';
 //import { PostListItem } from '../postlist';
 
 
@@ -15,11 +17,55 @@ export class BlogIndexComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private blogIndexService: BlogIndexService) {
-    }
+    private blogIndexService: BlogIndexService,
+    private breakpointObserver: BreakpointObserver) {}
+
+    Breakpoints = Breakpoints;
+    currentBreakpoint: string = '';
+  
+    readonly breakpoint$ = this.breakpointObserver
+    .observe([Breakpoints.HandsetPortrait, Breakpoints.WebLandscape])
+    .pipe(
+      distinctUntilChanged()
+    )
+  
+    private breakpointChanged() {
+      if(this.breakpointObserver.isMatched(Breakpoints.WebLandscape)) {
+        this.currentBreakpoint = Breakpoints.WebLandscape;
+      } else if (this.breakpointObserver.isMatched(Breakpoints.HandsetPortrait)) {
+        this.currentBreakpoint = Breakpoints.HandsetPortrait
+      }
+     }
+
+     ngOnInit(): void {
+
+      this.breakpoint$.subscribe(() => this.breakpointChanged())
+  
+      this.getPosts();
+  
+       this.route.params.subscribe((params) => {
+        if (params['tag'] == null) {
+          console.log('null tag')
+          return
+        }
+        this.router.navigate([`/posts/${params['tag']}`])
+        .then(nav => {
+          this.getPosts()
+          console.log(nav);
+        }, err => {
+          console.log(err)
+        })
+       })  
+      }
+  
+  
+
+
+
+
 
   posts: PostIndexItem[] = [];
-  isMobile=true;
+
 
    getPosts(): void {
     let tag = String(this.route.snapshot.paramMap.get('tag'));
@@ -34,26 +80,6 @@ export class BlogIndexComponent {
    }
 
 
-  ngOnInit(): void {
-
-    this.getPosts();
-     this.route.params.subscribe((params) => {
-      if (params['tag'] == null) {
-        console.log('null tag')
-        return
-      }
-      this.router.navigate([`/posts/${params['tag']}`])
-      .then(nav => {
-        this.getPosts()
-        console.log(nav);
-      }, err => {
-        console.log(err)
-      })
-
-     })
-
-      
-    }
 
 
 
