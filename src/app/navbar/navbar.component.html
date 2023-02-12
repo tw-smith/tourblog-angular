@@ -2,25 +2,51 @@
     <div class="pointer">
         <p class="navbar__title" routerLink="/posts">{{siteTitle | uppercase}}</p>
     </div>
-    <ul class="navbar__entries">
-        <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="/posts">HOME</p>
-        </li>
-        <li class="navbar__list pointer" *ngFor="let tag of this.tags">
-            <p class="navbar__entry" routerLink="/posts/{{tag}}">{{tag.replace('-', ' ') | uppercase}}</p>
-        </li>
-        <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="/where-am-i">WHERE AM I?</p>
-        </li>
-        <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="contact">CONTACT</p>
-        </li>
-        <li class="navbar__list pointer icon">
-            <a href="https://www.youtube.com/@cycling-south"><img class="navbar__entry" src="assets/yt_icon_mono_light.png"></a>
-        </li>
-        <li class="navbar__list pointer icon">
-            <a href="https://www.instagram.com/toby.s91"><img class="navbar__entry" src="assets/Instagram_Glyph_Black.png"></a>
-        </li>
-    </ul>
+    <div>
+        <ul class="navbar__entries">
+            <li class="navbar__list pointer" *ngIf="desktop">
+                <p class="navbar__entry" routerLink="/posts">HOME</p>
+            </li>
+            <ng-container *ngIf="desktop">
+                <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+                    <p class="navbar__entry" routerLink="/posts/{{tag}}">{{tag.replace('-', ' ') | uppercase}}</p>
+                </li>
+            </ng-container>
+    
+            <li class="navbar__list pointer" *ngIf="desktop">
+                <p class="navbar__entry" routerLink="/where-am-i">WHERE AM I?</p>
+            </li>
+            <li class="navbar__list pointer" *ngIf="desktop">
+                <p class="navbar__entry" routerLink="contact">CONTACT</p>
+            </li>
+            <li class="navbar__list pointer icon" *ngIf="desktop">
+                <a href="https://www.youtube.com/@cycling-south"><img class="navbar__entry" src="assets/yt_icon_mono_light.png"></a>
+            </li>
+            <li  class="navbar__list pointer icon" *ngIf="desktop">
+                <a href="https://www.instagram.com/toby.s91"><img class="navbar__entry" src="assets/Instagram_Glyph_Black.png"></a>
+            </li>
+            <li  class="navbar__list pointer icon" *ngIf="!desktop" (click)="showMobileNavModal()">
+                <img id="mobileNavModalIcon"class="navbar__entry" src="assets/icons8-hamburger-menu-48.png">
+            </li>
+        </ul>
+    </div>
+
+    <div class="mobileNavModal" [hidden]="!mobileNavModal">
+        <ul>
+            <li class="navbar__list pointer">
+                <p class="navbar__entry" routerLink="/posts" (click)="hideMobileNavModal()">HOME</p>
+            </li>
+            <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+                <p class="navbar__entry" routerLink="/posts/{{tag}}" (click)="hideMobileNavModal()">{{tag.replace('-', ' ') | uppercase}}</p>
+            </li>
+            <li class="navbar__list pointer">
+                <p class="navbar__entry" routerLink="/where-am-i" (click)="hideMobileNavModal()">WHERE AM I?</p>
+            </li>
+            <li class="navbar__list pointer">
+                <p class="navbar__entry" routerLink="contact" (click)="hideMobileNavModal()">CONTACT</p>
+            </li>
+        </ul>
+    </div>
+
 </div>
 

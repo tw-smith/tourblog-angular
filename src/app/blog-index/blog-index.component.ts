@@ -19,7 +19,7 @@ export class BlogIndexComponent {
     }
 
   posts: PostIndexItem[] = [];
-
+  isMobile=true;
 
    getPosts(): void {
     let tag = String(this.route.snapshot.paramMap.get('tag'));

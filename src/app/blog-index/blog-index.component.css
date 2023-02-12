@@ -10,6 +10,17 @@
     overflow: hidden;
 }
 
+.blog-cover-mobile {
+    position: relative;
+    width:100%;
+    overflow:hidden;
+}
+
+.blog-cover-mobile img {
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+}
+
 .blog-cover img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
