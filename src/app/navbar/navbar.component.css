@@ -40,6 +40,8 @@
     color: var(--title-text-colour);
     font-weight: var(--title-font-weight);
     margin: 0;
+    margin-left: 50px;
+    font-size: 1.5rem;
 }
 
 .navbar__list {

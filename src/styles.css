@@ -21,6 +21,13 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: "Raleway";
+    src: url('/assets/fonts/Raleway-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
 * {
     font-family: "Raleway";
 }
@@ -36,7 +43,7 @@
 :root {
     --menu-text-colour: grey;
     --menu-text-hover-colour: black;
-    --menu-font-weight: 400;
+    --menu-font-weight: 500;
 
     --title-text-colour: black;
     --title-font-weight: 800;

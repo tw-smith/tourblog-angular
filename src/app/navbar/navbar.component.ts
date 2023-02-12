@@ -25,6 +25,7 @@ export class NavbarComponent {
   readonly breakpoint$ = this.breakpointObserver
   .observe([Breakpoints.HandsetPortrait, Breakpoints.WebLandscape])
   .pipe(
+    tap(value => console.log(value)),
     distinctUntilChanged()
   )
 

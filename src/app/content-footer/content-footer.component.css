@@ -8,3 +8,16 @@
 .backToTop:hover {
     color: var(--menu-text-hover-colour)
 }
+
+.acknowledgments {
+    color: var(--menu-text-colour);
+    font-weight: var(--menu-font-weight);
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.75rem;
+}
+
+.acknowledgments a {
+    font-weight: var(--title-font-weight);
+    color: var(--menu-text-colour);
+}
