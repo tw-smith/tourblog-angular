@@ -1,5 +1,10 @@
 .backToTop {
-    color: grey;
+    color: var(--menu-text-colour);
+    font-weight: var(--menu-font-weight);
     text-decoration: none;
     text-align: center;
+}
+
+.backToTop:hover {
+    color: var(--menu-text-hover-colour)
 }

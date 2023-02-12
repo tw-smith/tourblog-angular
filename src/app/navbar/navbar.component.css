@@ -11,8 +11,8 @@
 }
 
 .navbar__title {
-    color: black;
-    font-weight: 800;
+    color: var(--title-text-colour);
+    font-weight: var(--title-font-weight);
     margin: 0;
 }
 
@@ -23,12 +23,12 @@
 }
 
 .navbar__entry {
-    color: grey;
-    font-weight: 400;
+    color: var(--menu-text-colour);
+    font-weight: var(--menu-font-weight);
 }
 
 .navbar__entry:hover {
-    color: black;
+    color: var(--menu-text-hover-colour);
     transition: 0.75s;
 }
 
