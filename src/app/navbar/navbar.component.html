@@ -1,6 +1,6 @@
 <div class="navbar">
-    <div class="pointer">
-        <p class="navbar__title" routerLink="/posts">{{siteTitle | uppercase}}</p>
+    <div class="navbar__title pointer">
+        <p routerLink="/posts">{{siteTitle | uppercase}}</p>
     </div>
     <div>
         <ul class="navbar__entries">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="mobileNavModal" *ngIf="mobileNavModal">
-        <img src="assets/icons8-multiply-48.png" (click)="hideMobileNavModal()">
+        <img class="mobileNavModal__exitButton" src="assets/icons8-multiply-48.png" (click)="hideMobileNavModal()">
         <ul>
             <li class="navbar__list pointer">
                 <p class="navbar__entry" routerLink="/posts" (click)="hideMobileNavModal()">HOME</p>
@@ -46,6 +46,10 @@
             </li>
             <li class="navbar__list pointer">
                 <p class="navbar__entry" routerLink="contact" (click)="hideMobileNavModal()">CONTACT</p>
+            </li>
+            <li class="navbar__list icon icon--mobile">
+                <a href="https://www.youtube.com/@cycling-south"><img src="assets/yt_icon_mono_light.png"></a>
+                <a href="https://www.instagram.com/toby.s91"><img src="assets/Instagram_Glyph_Black.png"></a>
             </li>
         </ul>
     </div>

@@ -68,9 +68,8 @@ breakpoint size in Strapi so the image is always big enough */
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
-    margin: 0.25vw;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0;
+    overflow: hidden;
 }
 
 .gallery__item-wrapper {
@@ -79,13 +78,14 @@ breakpoint size in Strapi so the image is always big enough */
     margin: 0.25vw;
 }
 
-@media (max-aspect-ratio: 1/1) { /* TODO finish responsive design for gallery */
+/* TODO finish responsive design for gallery */
+@media (max-aspect-ratio: 1/1) { 
     .gallery__item-wrapper {
         height: 20vh;
     }
-}
+} 
 
-@media (max-height: 480px) {
+ @media (max-height: 480px) {
     .gallery__item-wrapper {
         height: 70vh;
     }

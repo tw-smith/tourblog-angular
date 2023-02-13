@@ -1,7 +1,9 @@
-<div class="post">
+<div [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__text post__text-mobile':
+                'post__text'">
     <h1 class="post__title">{{post[0].title}}</h1>
     <h2 class="post__subtitle">{{post[0].subtitle}}</h2>
-    <p class="post__content" [innerText] = "post[0].content"></p>
+    <p [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__content post__content-mobile' :
+                  'post__content'" [innerText] = "post[0].content"></p>
 </div>
 
 

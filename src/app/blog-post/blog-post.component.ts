@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogPostService } from '../blog-post.service';
 import { Post } from '../post';
+import { ResponsiveService } from '../responsive.service';
+import { Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-blog-post',
@@ -11,9 +13,27 @@ import { Post } from '../post';
 export class BlogPostComponent {
   constructor(
     private route: ActivatedRoute,
-    private blogPostService: BlogPostService) {}
+    private blogPostService: BlogPostService,
+    private responsiveService: ResponsiveService) {}
 
   post: Post[] = [];
+
+  Breakpoints = Breakpoints;
+  currentBreakpoint: string = '';
+  isHandsetPortrait: boolean = false;
+  isHandsetLandscape: boolean = false;
+  isWebLandscape: boolean = true;
+
+  ngOnInit(): void {
+
+    this.responsiveService.breakpointChanged().subscribe((state) => {
+      this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
+      this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
+      this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
+    })
+
+    this.getPost();
+  }
 
   getPost(): void {
     const slug = String(this.route.snapshot.paramMap.get('slug'));
@@ -22,7 +42,5 @@ export class BlogPostComponent {
     })
   }
 
-  ngOnInit(): void {
-    this.getPost();
-  }
+
 }
