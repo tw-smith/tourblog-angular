@@ -29,12 +29,15 @@ export class NavbarComponent {
    currentBreakpoint: string = '';
    isHandsetPortrait: boolean = false;
    isHandsetLandscape: boolean = false;
+   isTablet: boolean = false;
    isWebLandscape: boolean = true;
+
 
    ngOnInit(): void {
     this.responsiveService.breakpointChanged().subscribe((state) => {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
       this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
+      this.isTablet = (state.breakpoints[Breakpoints.TabletPortrait] || state.breakpoints[Breakpoints.TabletLandscape]);
       this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
     })
     this.getPosts();

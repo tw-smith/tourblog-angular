@@ -24,7 +24,7 @@
                     <a href="https://www.instagram.com/toby.s91"><img class="navbar__entry" src="assets/Instagram_Glyph_Black.png"></a>
                 </li>
             </ng-container>
-            <ng-container *ngIf="isHandsetPortrait || isHandsetLandscape">
+            <ng-container *ngIf="isHandsetPortrait || isHandsetLandscape || isTablet">
                 <li  class="navbar__list pointer icon"(click)="showMobileNavModal()">
                     <img id="mobileNavModalIcon"class="navbar__entry" src="assets/icons8-hamburger-menu-48.png">
                 </li>

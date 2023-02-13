@@ -11,14 +11,15 @@ export class ResponsiveService {
 
 
   Breakpoints = Breakpoints;
-  currentBreakpoint: string = '';
 
 
   breakpointChanged(): Observable<BreakpointState> {
     return this.breakpointObserver
     .observe([Breakpoints.WebLandscape, 
               Breakpoints.HandsetPortrait,
-              Breakpoints.HandsetLandscape])
+              Breakpoints.HandsetLandscape,
+              Breakpoints.TabletPortrait,
+              Breakpoints.TabletLandscape])
     .pipe(
       tap(value => console.log(value)),
       distinctUntilChanged()

@@ -22,6 +22,7 @@ export class BlogPostComponent {
   currentBreakpoint: string = '';
   isHandsetPortrait: boolean = false;
   isHandsetLandscape: boolean = false;
+  isTablet: boolean = false;
   isWebLandscape: boolean = true;
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class BlogPostComponent {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
       this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
       this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
+      this.isTablet = (state.breakpoints[Breakpoints.TabletLandscape] || state.breakpoints[Breakpoints.TabletPortrait])
     })
 
     this.getPost();
