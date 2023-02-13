@@ -16,6 +16,17 @@
     overflow:hidden;
 }
 
+.blog-cover-mobile-landscape {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+}
+
+.blog-cover-mobile-landscape img {
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+}
+
 .blog-cover-mobile img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);

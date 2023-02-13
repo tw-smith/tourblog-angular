@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { BlogIndexService } from '../blog-index.service';
 import { PostIndexItem } from '../post';
  import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { distinctUntilChanged } from 'rxjs';
+import { distinctUntilChanged, Observable } from 'rxjs';
 import { ResponsiveService } from '../responsive.service';
 import { tap } from 'rxjs';
 
@@ -15,43 +15,32 @@ import { tap } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private blogIndexService: BlogIndexService, private breakpointObserver: BreakpointObserver) {}
+  constructor(private blogIndexService: BlogIndexService, 
+              private responsiveService: ResponsiveService) {}
   @Input() siteTitle!: string;
-
-
-  Breakpoints = Breakpoints;
-  currentBreakpoint: string = '';
-
-  readonly breakpoint$ = this.breakpointObserver
-  .observe([Breakpoints.HandsetPortrait, Breakpoints.WebLandscape])
-  .pipe(
-    tap(value => console.log(value)),
-    distinctUntilChanged()
-  )
-
-  private breakpointChanged() {
-    if(this.breakpointObserver.isMatched(Breakpoints.WebLandscape)) {
-      this.currentBreakpoint = Breakpoints.WebLandscape;
-    } else if (this.breakpointObserver.isMatched(Breakpoints.HandsetPortrait)) {
-      this.currentBreakpoint = Breakpoints.HandsetPortrait
-    }
-   }
-
-   ngOnInit(): void {
-    this.breakpoint$.subscribe(() => this.breakpointChanged())
-    this.getPosts();
-  }
-
-  // .pipe(
-  //   tap(value => console.log("asdas")),
-  //   distinctUntilChanged()
-  // )
-
 
 
   posts: PostIndexItem[] = [];
   tags: string[] = [];
   mobileNavModal = false;
+
+
+   Breakpoints = Breakpoints;
+   currentBreakpoint: string = '';
+   isHandsetPortrait: boolean = false;
+   isHandsetLandscape: boolean = false;
+   isWebLandscape: boolean = true;
+
+   ngOnInit(): void {
+    this.responsiveService.breakpointChanged().subscribe((state) => {
+      this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
+      this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
+      this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
+    })
+    this.getPosts();
+  }
+
+ 
 
    getPosts(): void { //TODO at the moment we make two API calls for post-index, one for navbar tags 
                       // and one for post mosaic view. Surely we can share the data and only make one API call?

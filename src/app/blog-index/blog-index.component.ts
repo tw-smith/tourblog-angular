@@ -4,6 +4,7 @@ import { Post, PostIndexItem } from '../post';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged } from 'rxjs';
+import { ResponsiveService } from '../responsive.service';
 //import { PostListItem } from '../postlist';
 
 
@@ -18,29 +19,21 @@ export class BlogIndexComponent {
     private route: ActivatedRoute,
     private router: Router,
     private blogIndexService: BlogIndexService,
-    private breakpointObserver: BreakpointObserver) {}
+    private responsiveService: ResponsiveService) {}
 
     Breakpoints = Breakpoints;
     currentBreakpoint: string = '';
-  
-    readonly breakpoint$ = this.breakpointObserver
-    .observe([Breakpoints.HandsetPortrait, Breakpoints.WebLandscape])
-    .pipe(
-      distinctUntilChanged()
-    )
-  
-    private breakpointChanged() {
-      if(this.breakpointObserver.isMatched(Breakpoints.WebLandscape)) {
-        this.currentBreakpoint = Breakpoints.WebLandscape;
-      } else if (this.breakpointObserver.isMatched(Breakpoints.HandsetPortrait)) {
-        this.currentBreakpoint = Breakpoints.HandsetPortrait
-      }
-     }
+    isHandsetPortrait: boolean = false;
+    isHandsetLandscape: boolean = false;
+    isWebLandscape: boolean = true;
 
      ngOnInit(): void {
 
-      this.breakpoint$.subscribe(() => this.breakpointChanged())
-  
+      this.responsiveService.breakpointChanged().subscribe((state) => {
+        this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
+        this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
+        this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape]
+      })
       this.getPosts();
   
        this.route.params.subscribe((params) => {
