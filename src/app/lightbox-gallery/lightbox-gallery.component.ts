@@ -1,6 +1,9 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Photo } from '../post';
-import { SwiperComponent } from 'swiper/angular';
+// import { SwiperComponent } from 'swiper/angular';
+
+import { register } from 'swiper/element/bundle'
+
 import SwiperCore, { SwiperOptions, Navigation, Swiper, EffectFade } from 'swiper';
 
 Swiper.use([Navigation, EffectFade])
@@ -18,6 +21,31 @@ export class LightboxGalleryComponent {
   @Input() photos!: Photo[]
 
   swiperOn: boolean = false;
+  ngOnInit(): void {
+    register()
+
+    const swiperEl = document.querySelector('swiper-container') as any;
+    const params = {
+      injectStyles: [`
+      
+      .swiper-paginiation-bullet {
+        background: rgb(0,0,0);
+        opacity: 0.8;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: cyan;
+      }
+      
+      `
+
+      ],
+    }
+    Object.assign(swiperEl, params);
+    swiperEl.initialize();
+
+
+  }
 
   config: SwiperOptions = {
     initialSlide: 1,
