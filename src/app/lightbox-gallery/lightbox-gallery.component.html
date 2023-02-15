@@ -1,43 +1,26 @@
 
 
-<!-- <div *ngIf="swiperOn">
-    <div class="lightbox-modal">
-        <div class="lightbox-close" (click)="closeSwiper()">X</div>
-        <swiper-slide [config]="config" class="mySwiper">
-            <ng-template swiperSlide *ngFor="let photo of photos">
-                <img src="http://127.0.0.1:1337{{photo.url}}">
-            </ng-template>
+
+<div [hidden]="!previewSwiperOn" [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'gallery-wrapper-mobile' : 'gallery-wrapper'">
+    <swiper-container id="swiper1" class="previewGallery">
+        <swiper-slide class="gallery__item-wrapper" *ngFor="let photo of photos; let i=index">
+            <img class="gallery__item" src="http://127.0.0.1:1337{{photo.formats.large.url}}" (click)="goToModalView(i)">
         </swiper-slide>
-    </div>    
-</div> -->
+    </swiper-container>
 
-
-
-<div *ngIf="swiperOn">
-    <div class="lightbox-modal">
-        <div class="lightbox-close" (click)="closeSwiper()">X</div>
-        <swiper-container
-        navigation="true"
-        pagination="true">
-            <swiper-slide *ngFor="let photo of photos">
-                <img src="http://127.0.0.1:1337{{photo.url}}">
-            </swiper-slide>
-        </swiper-container>
-    </div>
 </div>
 
-<div class="gallery-wrapper">
-    <swiper-container 
-        class="previewGallery"
-        slides-per-view="1"
-        navigation="true"
-        pagination="true"
-        init="false">
-    <swiper-slide class="gallery__item-wrapper" *ngFor="let photo of photos; let i=index">
-        <img class="gallery__item" src="http://127.0.0.1:1337{{photo.formats.large.url}}" (click)="initSwiper(i)">
-    </swiper-slide>
-</swiper-container>
-<!-- <div class="swiper-pagination"></div> -->
+
+
+<div [hidden]="!modalSwiperOn">
+    <div class="lightbox-modal">
+        <swiper-container id="swiper2">
+            <swiper-slide *ngFor="let photo of photos; let j=index">
+                <div class="lightbox-close" (click)="goToPreviewView(j)">X</div>
+                <img src="http://127.0.0.1:1337{{photo.url}}">
+            </swiper-slide>
+        </swiper-container>  
+    </div>
 </div>
 
 

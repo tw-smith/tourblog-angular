@@ -4,6 +4,9 @@ import { Photo } from '../post';
 
 import { register } from 'swiper/element/bundle'
 
+import { ResponsiveService } from '../responsive.service';
+import { Breakpoints } from '@angular/cdk/layout';
+
 import SwiperCore, { SwiperOptions, Navigation, Swiper, EffectFade } from 'swiper';
 
 Swiper.use([Navigation, EffectFade])
@@ -18,57 +21,94 @@ import { NgFor } from '@angular/common';
   encapsulation: ViewEncapsulation.None //TODO why do we need this to make slider work?
 })
 export class LightboxGalleryComponent {
+  constructor(private responsiveService: ResponsiveService) {}
+
+  Breakpoints = Breakpoints;
+  currentBreakpoint: string = '';
+  isHandsetPortrait: boolean = false;
+  isHandsetLandscape: boolean = false;
+  isWebLandscape: boolean = true;
+
+
   @Input() photos!: Photo[]
 
-  swiperOn: boolean = false;
+  modalSwiperOn: boolean = false;
+  previewSwiperOn: boolean = true;
+  previewSwiperEl: any;
+  modalSwiperEl: any;
+
+
   ngOnInit(): void {
+      this.previewSwiperEl = document.getElementById("swiper1");
+      this.modalSwiperEl = document.getElementById("swiper2");
+
+      this.responsiveService.breakpointChanged().subscribe((state) => {
+      this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
+      this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
+      this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
+    })
+
+
     register()
 
-    const swiperEl = document.querySelector('swiper-container') as any;
+    this.initPreviewSwiper()
+    this.initModalSwiper()
+  }
+
+
+  initPreviewSwiper() {
     const params = {
-      injectStyles: [`
+      injectStyle: [`
+        .swiper-pagination-bullet {
+          background: rgb(0,0,0);
+          opacity: 0.8;
+        }
       
-      .swiper-paginiation-bullet {
-        background: rgb(0,0,0);
-        opacity: 0.8;
-      }
-
-      .swiper-pagination-bullet-active {
-        background: cyan;
-      }
-      
-      `
-
+        .swiper-pagination-bullet-active {
+          background: cyan;
+        }`
       ],
+      navigation: true,
+      pagination: true,
+      slidesPerView: 1,
+      loop: false,
+      init: false,
     }
-    Object.assign(swiperEl, params);
-    swiperEl.initialize();
 
-
+    Object.assign(this.previewSwiperEl, params);
+    this.previewSwiperEl.initialize();
   }
 
-  config: SwiperOptions = {
-    initialSlide: 1,
-    navigation: true,
-    keyboard: true, //TODO keyboard nav with arrrow buttons doesnt work
-    loop: true,
-    speed: 750,
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true
-    },
-    watchSlidesProgress: true
+  initModalSwiper() {
+    const params = {
+      initialSlide: 0,
+      enabled: false,
+      navigation: true,
+      pagination: true,
+      slidesPerView: 1,
+      loop: false,
+      init: false,
+    };
+    Object.assign(this.modalSwiperEl, params);
+    this.modalSwiperEl.initialize();
   }
 
-  initSwiper(i: number) {
-    this.config.initialSlide = i;
-    this.swiperOn = true;
+
+  goToModalView(index: number) {
+    this.previewSwiperEl.enabled = false;
+    this.modalSwiperEl.enabled = true;
+    this.modalSwiperEl.swiper.slideTo(index);
+    this.modalSwiperOn = true;
     document.getElementsByTagName("body")[0].classList.add("disabled-scroll")
-    
+
   }
 
-  closeSwiper() {
-    this.swiperOn = false;
-    document.getElementsByTagName("body")[0].classList.remove("disabled-scroll")
+  goToPreviewView(index: number) {
+    this.modalSwiperEl.enabled = false;
+    this.previewSwiperEl.enabled = true;
+    this.previewSwiperEl.swiper.slideTo(index)
+    this.modalSwiperOn = false;
+    document.getElementsByTagName("body")[0].classList.remove("disabled-scroll") 
   }
+
 }
