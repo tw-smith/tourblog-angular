@@ -96,19 +96,19 @@ export class LightboxGalleryComponent {
   }
 
 
-  goToModalView(index: number) {
+  goToModalView() {
     this.previewSwiperEl.enabled = false;
     this.modalSwiperEl.enabled = true;
-    this.modalSwiperEl.swiper.slideTo(index);
+    this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex);
     this.modalSwiperOn = true;
     document.getElementsByTagName("body")[0].classList.add("disabled-scroll")
 
   }
 
-  goToPreviewView(index: number) {
+  goToPreviewView() {
     this.modalSwiperEl.enabled = false;
     this.previewSwiperEl.enabled = true;
-    this.previewSwiperEl.swiper.slideTo(index)
+    this.previewSwiperEl.swiper.slideTo(this.modalSwiperEl.swiper.activeIndex)
     this.modalSwiperOn = false;
     document.getElementsByTagName("body")[0].classList.remove("disabled-scroll") 
   }
