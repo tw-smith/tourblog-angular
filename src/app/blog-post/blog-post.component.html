@@ -1,13 +1,15 @@
 <div [ngClass]="isHandsetPortrait || isHandsetLandscape || isTablet ? 'post__text post__text-mobile':
                 'post__text'">
-    <h1 class="post__title">{{post[0].title}}</h1>
-    <h2 class="post__subtitle">{{post[0].subtitle}}</h2>
-    <p [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__content post__content-mobile' :
+    <h1 [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__title post__title--mobile' :
+                    'post__title'">{{post[0].title}}</h1>
+    <h2 [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__subtitle post__subtitle--mobile' : 
+                    'post__subtitle'">{{post[0].subtitle}}</h2>
+    <p [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__content post__content--mobile' :
                   'post__content'" [innerText] = "post[0].content"></p>
 </div>
 
 
-<app-lightbox-gallery [photos]="post[0].photos"></app-lightbox-gallery>
+<app-lightbox-gallery *ngIf="post[0].photos" [photos]="post[0].photos"></app-lightbox-gallery>
 
 
 

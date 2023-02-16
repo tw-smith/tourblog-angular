@@ -25,10 +25,18 @@
 .post__content {
     color: black;
     line-height: 1.5rem;
-    font-size: 20px;
+    font-size: var(--mobile-body-text-font-size);
 }
 
-.post__content-mobile {
-    font-size: 14px;
-    line-height: 20px;
+.post__content--mobile {
+    font-size: var(--mobile-body-text-font-size);
+    line-height: 1.25rem;
+}
+
+.post__title--mobile {
+    font-size: var(--mobile-title-text-font-size);
+}
+
+.post__subtitle--mobile {
+    font-size: var(--mobile-subtitle-text-font-size);
 }
