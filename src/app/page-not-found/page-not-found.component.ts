@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SplashImageService } from '../splash-image.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-page-not-found',
@@ -10,6 +11,7 @@ export class PageNotFoundComponent {
   constructor(private splashImageService: SplashImageService) {}
 
   splashURL: string = ''
+  apiUrl: string = ''
 
   getSplashURL(): void {
     this.splashImageService.getSplashURL().subscribe(resp => {
@@ -18,6 +20,7 @@ export class PageNotFoundComponent {
   }
 
   ngOnInit(): void {
+    this.apiUrl = environment.apiUrl;
     this.getSplashURL()
   }
 

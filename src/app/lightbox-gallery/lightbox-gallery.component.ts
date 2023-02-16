@@ -1,5 +1,6 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Photo } from '../post';
+import { environment } from 'src/environments/environment';
 // import { SwiperComponent } from 'swiper/angular';
 
 import { register } from 'swiper/element/bundle'
@@ -23,6 +24,8 @@ import { NgFor } from '@angular/common';
 export class LightboxGalleryComponent {
   constructor(private responsiveService: ResponsiveService) {}
 
+  apiUrl: string = '';
+
   Breakpoints = Breakpoints;
   currentBreakpoint: string = '';
   isHandsetPortrait: boolean = false;
@@ -39,6 +42,7 @@ export class LightboxGalleryComponent {
 
 
   ngOnInit(): void {
+      this.apiUrl = environment.apiUrl;
       this.previewSwiperEl = document.getElementById("swiper1");
       this.modalSwiperEl = document.getElementById("swiper2");
 

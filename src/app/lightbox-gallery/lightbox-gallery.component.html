@@ -4,7 +4,7 @@
 <div [hidden]="!previewSwiperOn" [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'gallery-wrapper-mobile' : 'gallery-wrapper'">
     <swiper-container id="swiper1" class="previewGallery">
         <swiper-slide class="gallery__item-wrapper" *ngFor="let photo of photos">
-            <img class="gallery__item" src="http://127.0.0.1:1337{{photo.formats.large.url}}" (click)="goToModalView()">
+            <img class="gallery__item" src="{{apiUrl}}{{photo.formats.large.url}}" (click)="goToModalView()">
         </swiper-slide>
     </swiper-container>
 
@@ -18,7 +18,7 @@
         <swiper-container id="swiper2">
             <swiper-slide *ngFor="let photo of photos">
                 <div class="modalImageContainer">
-                    <img src="http://127.0.0.1:1337{{photo.url}}">
+                    <img src="{{apiUrl}}{{photo.url}}">
                     <div class="modalImageOverlay">
                         <p class="modalImageCaption">{{photo.caption}}</p>
                     </div>
