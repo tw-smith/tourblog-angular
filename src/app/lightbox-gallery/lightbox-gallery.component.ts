@@ -73,6 +73,8 @@ export class LightboxGalleryComponent {
       slidesPerView: 1,
       loop: false,
       init: false,
+      virtual: true,
+      spaceBetween: 1000,
     }
 
     Object.assign(this.previewSwiperEl, params);
