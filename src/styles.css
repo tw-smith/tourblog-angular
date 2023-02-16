@@ -21,6 +21,13 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: "Raleway";
+    src: url('/assets/fonts/Raleway-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
 * {
     font-family: "Raleway";
 }
@@ -30,14 +37,28 @@
 
 @import url('assets/forms.css');
 
+/* RESETS */
+/* .html {
+    font-size: 10px;
+} */
+
 
 /* CSS Variables */
-
 :root {
     --menu-text-colour: grey;
     --menu-text-hover-colour: black;
-    --menu-font-weight: 400;
-
+    --menu-font-weight: 500;
     --title-text-colour: black;
     --title-font-weight: 800;
+
+
+
+    --desktop-body-text-font-size: 1.25rem;
+
+    --mobile-body-text-font-size: 1rem;
+    --mobile-body-text-line-spacing: 1.5rem;
+
+    --mobile-title-text-font-size: 2rem;
+    --mobile-subtitle-text-font-size: 1.5rem;
+
 }

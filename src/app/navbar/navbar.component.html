@@ -1,26 +1,58 @@
 <div class="navbar">
-    <div class="pointer">
-        <p class="navbar__title" routerLink="/posts">{{siteTitle | uppercase}}</p>
+    <div class="navbar__title pointer">
+        <p routerLink="/posts">{{siteTitle | uppercase}}</p>
     </div>
-    <ul class="navbar__entries">
-        <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="/posts">HOME</p>
-        </li>
-        <li class="navbar__list pointer" *ngFor="let tag of this.tags">
-            <p class="navbar__entry" routerLink="/posts/{{tag}}">{{tag.replace('-', ' ') | uppercase}}</p>
-        </li>
-        <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="/where-am-i">WHERE AM I?</p>
-        </li>
-        <li class="navbar__list pointer">
-            <p class="navbar__entry" routerLink="contact">CONTACT</p>
-        </li>
-        <li class="navbar__list pointer icon">
-            <a href="https://www.youtube.com/@cycling-south"><img class="navbar__entry" src="assets/yt_icon_mono_light.png"></a>
-        </li>
-        <li class="navbar__list pointer icon">
-            <a href="https://www.instagram.com/toby.s91"><img class="navbar__entry" src="assets/Instagram_Glyph_Black.png"></a>
-        </li>
-    </ul>
+    <div>
+        <ul class="navbar__entries">
+            <ng-container *ngIf="isWebLandscape">
+                <li class="navbar__list pointer">
+                    <p class="navbar__entry" routerLink="/posts">HOME</p>
+                </li>
+                <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+                    <p class="navbar__entry" routerLink="/posts/{{tag}}">{{tag.replace('-', ' ') | uppercase}}</p>
+                </li>
+                <li class="navbar__list pointer">
+                    <p class="navbar__entry" routerLink="/where-am-i">WHERE AM I?</p>
+                </li>
+                <li class="navbar__list pointer">
+                    <p class="navbar__entry" routerLink="contact">CONTACT</p>
+                </li>
+                <li class="navbar__list pointer icon">
+                    <a href="https://www.youtube.com/@cycling-south"><img class="navbar__entry" src="assets/yt_icon_mono_light.png"></a>
+                </li>
+                <li  class="navbar__list pointer icon">
+                    <a href="https://www.instagram.com/toby.s91"><img class="navbar__entry" src="assets/Instagram_Glyph_Black.png"></a>
+                </li>
+            </ng-container>
+            <ng-container *ngIf="isHandsetPortrait || isHandsetLandscape || isTablet">
+                <li  class="navbar__list pointer icon"(click)="showMobileNavModal()">
+                    <img id="mobileNavModalIcon"class="navbar__entry" src="assets/icons8-hamburger-menu-48.png">
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+
+    <div class="mobileNavModal" *ngIf="mobileNavModal">
+        <img class="mobileNavModal__exitButton" src="assets/icons8-multiply-48.png" (click)="hideMobileNavModal()">
+        <ul>
+            <li class="navbar__list pointer">
+                <p class="navbar__entry" routerLink="/posts" (click)="hideMobileNavModal()">HOME</p>
+            </li>
+            <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+                <p class="navbar__entry" routerLink="/posts/{{tag}}" (click)="hideMobileNavModal()">{{tag.replace('-', ' ') | uppercase}}</p>
+            </li>
+            <li class="navbar__list pointer">
+                <p class="navbar__entry" routerLink="/where-am-i" (click)="hideMobileNavModal()">WHERE AM I?</p>
+            </li>
+            <li class="navbar__list pointer">
+                <p class="navbar__entry" routerLink="contact" (click)="hideMobileNavModal()">CONTACT</p>
+            </li>
+            <li class="navbar__list icon icon--mobile">
+                <a href="https://www.youtube.com/@cycling-south"><img src="assets/yt_icon_mono_light.png"></a>
+                <a href="https://www.instagram.com/toby.s91"><img src="assets/Instagram_Glyph_Black.png"></a>
+            </li>
+        </ul>
+    </div>
+
 </div>
 

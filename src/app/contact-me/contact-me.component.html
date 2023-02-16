@@ -1,6 +1,7 @@
 
 <div [hidden]="submitted">
-    <form (ngSubmit)="onSubmit(contactForm)" class="form" #contactForm="ngForm">
+    <form (ngSubmit)="onSubmit(contactForm)" [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'form form--mobile' :
+                                                        'form'" #contactForm="ngForm">
         <div class="form__group">
             <label for="name">Name</label>
             <input type="text" id="name" class="form__item" placeholder="Name" required [(ngModel)]="model.name" name="name" #name="ngModel">

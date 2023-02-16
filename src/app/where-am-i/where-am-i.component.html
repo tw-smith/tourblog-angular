@@ -1,4 +1,5 @@
-<div class="mapContainer">
+<div [ngClass]="isHandsetPortrait || isHandsetLandscape? 'mapContainer mapContainer--mobile':
+                'mapContainer'">
     <iframe src="https://www.google.com/maps/d/embed?mid=1vX2V6v2r4rCyd3rXcZDMkl_Y_x4Pni4V" 
  class="embed-content">
 </iframe>

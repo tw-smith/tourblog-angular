@@ -1,8 +1,14 @@
-.post {
+.post__text {
     width: 100%;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.post__text-mobile {
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .post__title {
@@ -19,4 +25,18 @@
 .post__content {
     color: black;
     line-height: 1.5rem;
+    font-size: var(--mobile-body-text-font-size);
+}
+
+.post__content--mobile {
+    font-size: var(--mobile-body-text-font-size);
+    line-height: 1.25rem;
+}
+
+.post__title--mobile {
+    font-size: var(--mobile-title-text-font-size);
+}
+
+.post__subtitle--mobile {
+    font-size: var(--mobile-subtitle-text-font-size);
 }

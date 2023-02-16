@@ -1,6 +1,8 @@
 <div class="blog-covers">
     <!-- <a class="blog-cover" *ngFor="let post of posts" routerLink="/post/{{post.title.replace(' ', '-') | lowercase}}"> -->
-        <a class="blog-cover" *ngFor="let post of posts" routerLink="/post/{{post.slug}}">
+        <a [ngClass]="isHandsetPortrait ? 'blog-cover-mobile' : 
+                      isHandsetLandscape ? 'blog-cover-mobile-landscape' : 
+                      'blog-cover'" *ngFor="let post of posts" routerLink="/post/{{post.slug}}">
             <img src="http://127.0.0.1:1337{{post.coverPhoto}}">
             <div class="overlay">
                 <div class="overlay__text">
