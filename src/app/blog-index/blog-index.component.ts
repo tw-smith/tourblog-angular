@@ -5,6 +5,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged } from 'rxjs';
 import { ResponsiveService } from '../responsive.service';
+import { environment } from 'src/environments/environment';
 //import { PostListItem } from '../postlist';
 
 
@@ -26,9 +27,11 @@ export class BlogIndexComponent {
     isHandsetPortrait: boolean = false;
     isHandsetLandscape: boolean = false;
     isWebLandscape: boolean = true;
+    apiUrl: string = '';
+
 
      ngOnInit(): void {
-
+      this.apiUrl = environment.apiUrl;
       this.responsiveService.breakpointChanged().subscribe((state) => {
         this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
         this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
