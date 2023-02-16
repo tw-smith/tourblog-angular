@@ -22,6 +22,7 @@ export interface Post {
 }
 
 export interface Photo {
+    caption: string,
     id: number,
     url: string,
     formats: {

@@ -1,105 +1,111 @@
 @import "~swiper/css/bundle";
 
 
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-
-.lightbox-close {
-    z-index: 2;
-    position: absolute;
-    top: 1vh;
-    right: 1vw;
-    font-size: 30px;
-    color: black;
-    padding: 20px;
-}
-
-.lightbox-close:hover {
-    color: red;
-}
-   
 .disabled-scroll {
     overflow: hidden;
 }
 
-/* .swiper-slide img {
-    opacity: 1;
-} */
-
 .lightbox-modal {
+    z-index: 2;
     display: flex;
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(255,255,255, 0.9);
-    /* overflow-x: hidden;
-    overflow-y: hidden; */
-    /* z-index: 1000; */
+    background-color: rgba(0,0,0,1)
 }
 
 .lightbox-modal img {
+    z-index: 2;
     width: auto;
-    height: auto;
+    height: 100vh;
     max-height: 100vh;
     max-width: 100vw;
 }
 
 
-
-
-.lightbox-container {
+.gallery-wrapper {
+    box-sizing: border-box;
+    /* background-color: rgb(127, 127, 184); */
+    height: 800px;
     display: flex;
-    flex: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-wrapper-mobile {
+    box-sizing: border-box;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.previewGallery {
+    height: 100%;
+}
+
+
+.swiper-slide-active {
+    height: 90%;
+    top: 5%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
 }
 
-/* TODO panorama style images mess this up. I think because their height in pixels is too small so going to 100% height doesn't fill the container.
-Maybe work out what the row height is based on vh and fetch larger image if small isn't good enough? Or set fixed row height in pixels and set custom
-breakpoint size in Strapi so the image is always big enough */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    padding: 0;
-    overflow: hidden;
-}
-
-.gallery__item-wrapper {
-    height: 30vh;
-    flex-grow: 1;
-    margin: 0.25vw;
-}
-
-/* TODO finish responsive design for gallery */
-@media (max-aspect-ratio: 1/1) { 
-    .gallery__item-wrapper {
-        height: 20vh;
-    }
-} 
-
- @media (max-height: 480px) {
-    .gallery__item-wrapper {
-        height: 70vh;
-    }
+.swiper-slide-active img {
+    display: block;
+    height: 100%;
+    max-width: 90%;
+    object-fit: contain;
 }
 
 
-li:last-child {
-    flex-grow: 10;
+.modalImageContainer {
+    position: relative;
+    height: fit-content;
+
 }
 
-.gallery__item {
-    max-height: 100%;
-    min-width: 100%;
-    object-fit: cover;
-    vertical-align: bottom;
-    cursor: zoom-in;
+.modalImageOverlay {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.modalImageContainer img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modalImageCaption {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4) 25px, rgba(0, 0, 0, 0.5));
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 5px;
+}
+
+.lightbox-close {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    cursor:pointer;
+}
+
+.lightbox-close:hover {
+    color: cyan;
 }

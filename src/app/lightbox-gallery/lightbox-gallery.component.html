@@ -1,25 +1,31 @@
 
 
-<div *ngIf="swiperOn">
-    <div class="lightbox-modal">
-        <div class="lightbox-close" (click)="closeSwiper()">X</div>
-        <swiper [config]="config" class="mySwiper">
-            <ng-template swiperSlide *ngFor="let photo of photos">
-                <img src="http://127.0.0.1:1337{{photo.url}}">
-            </ng-template>
-        </swiper>
-    </div>    
+
+<div [hidden]="!previewSwiperOn" [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'gallery-wrapper-mobile' : 'gallery-wrapper'">
+    <swiper-container id="swiper1" class="previewGallery">
+        <swiper-slide class="gallery__item-wrapper" *ngFor="let photo of photos">
+            <img class="gallery__item" src="http://127.0.0.1:1337{{photo.formats.large.url}}" (click)="goToModalView()">
+        </swiper-slide>
+    </swiper-container>
+
 </div>
 
 
-<!-- https://css-tricks.com/adaptive-photo-layout-with-flexbox/ -->
-<div>
-    <ul class="gallery">
-        <li class="gallery__item-wrapper" *ngFor="let photo of photos; let i = index">
-            <img class="gallery__item" src="http://127.0.0.1:1337{{photo.formats.small.url}}" (click)="initSwiper(i);">
-        </li>
-        <li></li>
-    </ul>        
+
+<div [hidden]="!modalSwiperOn">
+    <div class="lightbox-modal">
+        <div class="lightbox-close" (click)="goToPreviewView()">X</div>
+        <swiper-container id="swiper2">
+            <swiper-slide *ngFor="let photo of photos">
+                <div class="modalImageContainer">
+                    <img src="http://127.0.0.1:1337{{photo.url}}">
+                    <div class="modalImageOverlay">
+                        <p class="modalImageCaption">{{photo.caption}}</p>
+                    </div>
+                </div>
+            </swiper-slide>
+        </swiper-container>  
+    </div>
 </div>
 
 
