@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from './post';
+import { environment } from 'src/environments/environment';
 
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -23,7 +24,7 @@ export class BlogPostService {
   }
 
   getPost(slug: string): Observable<Post[]>{
-    const postUrl = `http://127.0.0.1:1337/api/posts/${slug}`
+    const postUrl = `${environment.apiUrl}/api/posts/${slug}`
     return this.http.get<Post[]>(postUrl).pipe(catchError(this.handleError))
  }
 }

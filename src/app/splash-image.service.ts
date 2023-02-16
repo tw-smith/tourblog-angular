@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SplashURL } from './post';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class SplashImageService {
 
 
   getSplashURL(): Observable<SplashURL>{
-    const errorSplashURL = "http://127.0.0.1:1337/api/error-page"
+    const errorSplashURL = `${environment.apiUrl}/api/error-page`
     return this.http.get<SplashURL>(errorSplashURL)
  }
 
