@@ -25,7 +25,7 @@ export interface Post {
 export interface Photo {
     caption: string,
     id: number,
-    url: string,
+    url: any,
     formats: {
         small: {
             url: string

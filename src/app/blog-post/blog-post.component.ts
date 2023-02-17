@@ -35,14 +35,21 @@ export class BlogPostComponent {
     })
 
     this.getPost();
+   // this.sortPhotoArray(this.post[0])
   }
 
   getPost(): void {
     const slug = String(this.route.snapshot.paramMap.get('slug'));
     this.blogPostService.getPost(slug).subscribe(resp => {
+      this.sortPhotoArray(resp[0])
       this.post = resp
     })
   }
 
+  sortPhotoArray(post: Post) {
+    post.photos.sort(function(a,b) {
+      return a.url.localeCompare(b.url)
+    })
 
+  }
 }
