@@ -3,6 +3,7 @@ export interface PostIndexItem {
     id: number,
     title: string,
     publishedAt: string,
+    displayDate: string,
     slug: string,
     tag: string,
     coverPhoto: string,
