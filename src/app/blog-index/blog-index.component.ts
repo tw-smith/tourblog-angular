@@ -69,7 +69,7 @@ export class BlogIndexComponent {
     this.blogIndexService.getPostIndex(tag).subscribe(resp => {
 
       resp.sort(function(a,b) {
-        return a.displayDate.localeCompare(b.displayDate)
+        return b.displayDate.localeCompare(a.displayDate)
       })
       
       this.posts = resp;
