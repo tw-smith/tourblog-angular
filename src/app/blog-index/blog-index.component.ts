@@ -67,6 +67,11 @@ export class BlogIndexComponent {
     let tag = String(this.route.snapshot.paramMap.get('tag'));
     console.log(`tag is ${tag}`)
     this.blogIndexService.getPostIndex(tag).subscribe(resp => {
+
+      resp.sort(function(a,b) {
+        return a.displayDate.localeCompare(b.displayDate)
+      })
+      
       this.posts = resp;
      })
    }

@@ -48,6 +48,12 @@ export class NavbarComponent {
    getPosts(): void { //TODO at the moment we make two API calls for post-index, one for navbar tags 
                       // and one for post mosaic view. Surely we can share the data and only make one API call?
     this.blogIndexService.getPostIndex('all').subscribe(resp => {
+
+
+      resp.sort(function(a,b) {
+        return a.displayDate.localeCompare(b.displayDate)
+      })
+      
       this.posts = resp;
       this.getTags()
      })
