@@ -35,7 +35,6 @@ export class BlogPostComponent {
     })
 
     this.getPost();
-   // this.sortPhotoArray(this.post[0])
   }
 
   getPost(): void {
@@ -48,7 +47,11 @@ export class BlogPostComponent {
 
   sortPhotoArray(post: Post) {
     post.photos.sort(function(a,b) {
-      return a.url.localeCompare(b.url)
+      // https://stackoverflow.com/questions/609574/get-the-first-integers-in-a-string-with-javascript
+      const regex = /\d+/;
+      const a_index = a.url.match(regex).shift();
+      const b_index = b.url.match(regex).shift();
+      return a_index - b_index;
     })
 
   }
