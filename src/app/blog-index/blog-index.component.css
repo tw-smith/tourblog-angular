@@ -6,35 +6,42 @@
 
 .blog-cover {
     position: relative;
-    width: 25%;
+    width: 25vw;
+    height: 16.67vw;
+    /* height: 300px; */
     overflow: hidden;
 }
 
 .blog-cover-mobile {
     position: relative;
-    width:100%;
+    width:100vw;
+    height: 66.67vw;
     overflow:hidden;
 }
 
 .blog-cover-mobile-landscape {
     position: relative;
-    width: 50%;
+    width: 50vw;
+    height: 33.33vw;
     overflow: hidden;
 }
 
 .blog-cover-mobile-landscape img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
+    object-fit: cover;
 }
 
 .blog-cover-mobile img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
+    object-fit: cover;
 }
 
 .blog-cover img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
+    object-fit: cover;
 }
 
 .overlay {
