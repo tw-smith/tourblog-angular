@@ -35,7 +35,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
+    margin-left: 2vw;
+    margin-right: 2vw;
 }
 
 .navbar__entries {
@@ -46,7 +48,6 @@
 .navbar__title {
     color: var(--title-text-colour);
     font-weight: var(--title-font-weight);
-    margin-left: 5%;
     /* margin: 0;
     margin-left: 50px; */
     font-size: 1.5rem;
@@ -54,13 +55,19 @@
 
 .navbar__list {
     list-style-type: none;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
 }
 
 .navbar__entry {
     color: var(--menu-text-colour);
     font-weight: var(--menu-font-weight);
+    font-size: 0.8rem;
+}
+
+.navbar__entry--mobile {
+    font-size: 1rem;
+    margin: 1.25rem;
 }
 
 .navbar__entry:hover {

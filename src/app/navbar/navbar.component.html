@@ -36,16 +36,16 @@
         <img class="mobileNavModal__exitButton" src="assets/icons8-multiply-48.png" (click)="hideMobileNavModal()">
         <ul>
             <li class="navbar__list pointer">
-                <p class="navbar__entry" routerLink="/posts" (click)="hideMobileNavModal()">HOME</p>
+                <p class="navbar__entry navbar__entry--mobile" routerLink="/posts" (click)="hideMobileNavModal()">HOME</p>
             </li>
             <li class="navbar__list pointer" *ngFor="let tag of this.tags">
-                <p class="navbar__entry" routerLink="/posts/{{tag}}" (click)="hideMobileNavModal()">{{tag.replace('-', ' ') | uppercase}}</p>
+                <p class="navbar__entry navbar__entry--mobile" routerLink="/posts/{{tag}}" (click)="hideMobileNavModal()">{{tag.replace('-', ' ') | uppercase}}</p>
             </li>
             <li class="navbar__list pointer">
-                <p class="navbar__entry" routerLink="/where-am-i" (click)="hideMobileNavModal()">WHERE AM I?</p>
+                <p class="navbar__entry navbar__entry--mobile" routerLink="/where-am-i" (click)="hideMobileNavModal()">WHERE AM I?</p>
             </li>
             <li class="navbar__list pointer">
-                <p class="navbar__entry" routerLink="contact" (click)="hideMobileNavModal()">CONTACT</p>
+                <p class="navbar__entry navbar__entry--mobile" routerLink="contact" (click)="hideMobileNavModal()">CONTACT</p>
             </li>
             <li class="navbar__list icon icon--mobile">
                 <a href="https://www.youtube.com/@cycling-south"><img src="assets/yt_icon_mono_light.png"></a>
