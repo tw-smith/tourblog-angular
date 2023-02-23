@@ -45,6 +45,8 @@ body {
 
 /* CSS Variables */
 :root {
+    --main-theme-background-colour: #ffffef;
+    background-color: var(--main-theme-background-colour);
     --menu-text-colour: grey;
     --menu-text-hover-colour: black;
     --menu-font-weight: 500;
@@ -54,12 +56,19 @@ body {
 
 
     --desktop-body-text-font-size: 1.25rem;
+    --desktop-body-text-line-height: 1.75rem;
 
-    --mobile-body-text-font-size: 1rem;
-    --mobile-body-text-line-spacing: 1.5rem;
+
 
     --mobile-title-text-font-size: 2rem;
     --mobile-subtitle-text-font-size: 1.5rem;
+    --mobile-body-text-font-size: 1rem;
+    --mobile-body-text-line-height: 1.75rem;
+
+
+   
+
+   
     
 
 

@@ -54,9 +54,6 @@
 
 
 .swiper-slide-active {
-    /* height: 90%; */
-    /* height: 90%; */
-    /* top: 5%; */
     display: flex;
     justify-content: center;
     align-items: center;
