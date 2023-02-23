@@ -50,6 +50,8 @@ export class LightboxGalleryComponent {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
       this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
       this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
+      
+
     })
 
 
@@ -62,18 +64,6 @@ export class LightboxGalleryComponent {
 
   initPreviewSwiper() {
     const params = {
-      injectStyle: [`
-        .swiper-pagination-bullet {
-          background: rgb(0,0,0);
-          opacity: 0.8;
-        }
-      
-        .swiper-pagination-bullet-active {
-          background: cyan;
-        }`
-      ],
-      navigation: true,
-      pagination: true,
       slidesPerView: 1,
       loop: false,
       init: false,
@@ -81,6 +71,21 @@ export class LightboxGalleryComponent {
       spaceBetween: 1000,
     }
 
+    if (this.isHandsetPortrait || this.isHandsetLandscape) {
+      const mobileParams = {
+        pagination: {
+          dynamicBullets: true,
+        },
+        navigation: false,
+      }
+      Object.assign(params, mobileParams)
+    } else {
+      const desktopParams = {
+        pagination: true,
+        navigation: true,
+      }
+      Object.assign(params, desktopParams)
+    }
     Object.assign(this.previewSwiperEl, params);
     this.previewSwiperEl.initialize();
   }

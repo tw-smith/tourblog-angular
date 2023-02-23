@@ -60,5 +60,18 @@ body {
 
     --mobile-title-text-font-size: 2rem;
     --mobile-subtitle-text-font-size: 1.5rem;
+    
+
+
+
+    --swiper-pagination-color: #B31E00;
+    /* --swiper-pagination-bullet-size: 8px;
+    --swiper-pagination-bullet-width: 8px;
+    --swiper-pagination-bullet-height: 8px; */
+    --swiper-pagination-bullet-inactive-color: white;
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    /* --swiper-pagination-bullet-opacity: 1;
+    --swiper-pagination-bullet-horizontal-gap: 4px;
+    --swiper-pagination-bullet-vertical-gap: 6px;  */
 
 }
