@@ -40,8 +40,10 @@ export class BlogPostComponent {
   getPost(): void {
     const slug = String(this.route.snapshot.paramMap.get('slug'));
     this.blogPostService.getPost(slug).subscribe(resp => {
-      this.sortPhotoArray(resp[0])
-      this.post = resp
+      if (resp[0].photos !== null) {
+        this.sortPhotoArray(resp[0])
+        this.post = resp
+      }
     })
   }
 
