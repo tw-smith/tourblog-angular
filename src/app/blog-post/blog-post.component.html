@@ -1,11 +1,11 @@
 <div [ngClass]="isHandsetPortrait || isHandsetLandscape || isTablet ? 'post__text post__text-mobile':
                 'post__text'">
     <h1 [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__title post__title--mobile' :
-                    'post__title'">{{post[0].title}}</h1>
+                    'post__title'">{{postTitle}}</h1>
     <h2 [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__subtitle post__subtitle--mobile' : 
-                    'post__subtitle'">{{post[0].subtitle}}</h2>
+                    'post__subtitle'">{{postSubTitle}}</h2>
     <p [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'post__content post__content--mobile' :
-                  'post__content'" [innerText] = "post[0].content"></p>
+                  'post__content'" [innerText] = "postContent"></p>
 </div>
 
 

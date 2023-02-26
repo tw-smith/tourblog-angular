@@ -37,13 +37,25 @@ export class BlogPostComponent {
     this.getPost();
   }
 
+  get postTitle() {
+    return (this.post && this.post[0].title) ? this.post[0].title : null
+  }
+
+  get postSubTitle() {
+    return (this.post[0] && this.post[0].subtitle) ? this.post[0].subtitle : null
+  }
+
+  get postContent() {
+    return (this.post[0] && this.post[0].content) ? this.post[0].content : null
+  }
+
   getPost(): void {
     const slug = String(this.route.snapshot.paramMap.get('slug'));
     this.blogPostService.getPost(slug).subscribe(resp => {
       if (resp[0].photos !== null) {
         this.sortPhotoArray(resp[0])
-        this.post = resp
       }
+      this.post = resp
     })
   }
 

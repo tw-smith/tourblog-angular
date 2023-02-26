@@ -8,7 +8,7 @@
                 <li class="navbar__list pointer">
                     <p class="navbar__entry" routerLink="/posts">HOME</p>
                 </li>
-                <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+                <li class="navbar__list pointer" *ngFor="let tag of categoryTags">
                     <p class="navbar__entry" routerLink="/posts/{{tag}}">{{tag.replace('-', ' ') | uppercase}}</p>
                 </li>
                 <li class="navbar__list pointer">
@@ -38,7 +38,7 @@
             <li class="navbar__list pointer">
                 <p class="navbar__entry navbar__entry--mobile" routerLink="/posts" (click)="hideMobileNavModal()">HOME</p>
             </li>
-            <li class="navbar__list pointer" *ngFor="let tag of this.tags">
+            <li class="navbar__list pointer" *ngFor="let tag of categoryTags">
                 <p class="navbar__entry navbar__entry--mobile" routerLink="/posts/{{tag}}" (click)="hideMobileNavModal()">{{tag.replace('-', ' ') | uppercase}}</p>
             </li>
             <li class="navbar__list pointer">
