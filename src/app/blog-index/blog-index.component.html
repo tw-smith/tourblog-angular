@@ -1,5 +1,5 @@
 <div class="blog-covers">
-    <!-- <a class="blog-cover" *ngFor="let post of posts" routerLink="/post/{{post.title.replace(' ', '-') | lowercase}}"> -->
+    <!-- TODO: change these HTML interpolations to getters? -->
         <a [ngClass]="isHandsetPortrait ? 'blog-cover-mobile' : 
                       isHandsetLandscape ? 'blog-cover-mobile-landscape' : 
                       'blog-cover'" *ngFor="let post of posts" routerLink="/post/{{post.slug}}">

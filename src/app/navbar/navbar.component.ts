@@ -43,7 +43,14 @@ export class NavbarComponent {
     this.getPosts();
   }
 
- 
+
+  get categoryTags() {
+    if (this.posts) {
+      return [...new Set(this.posts.map(({tag}) => tag))];
+    } else {
+      return null
+    }
+  }
 
    getPosts(): void { //TODO at the moment we make two API calls for post-index, one for navbar tags 
                       // and one for post mosaic view. Surely we can share the data and only make one API call?
@@ -55,7 +62,6 @@ export class NavbarComponent {
       })
       
       this.posts = resp;
-      this.getTags()
      })
    }
 
