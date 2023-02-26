@@ -24,13 +24,13 @@
 
 .post__content {
     color: black;
-    line-height: 1.5rem;
-    font-size: var(--mobile-body-text-font-size);
+    line-height: var(--desktop-body-text-line-height);
+    font-size: var(--desktop-body-text-font-size);
 }
 
 .post__content--mobile {
     font-size: var(--mobile-body-text-font-size);
-    line-height: 1.25rem;
+    line-height: var(--mobile-body-text-line-height);
 }
 
 .post__title--mobile {
