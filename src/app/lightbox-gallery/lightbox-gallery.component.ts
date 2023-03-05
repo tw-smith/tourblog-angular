@@ -79,6 +79,7 @@ export class LightboxGalleryComponent {
         navigation: false,
       }
       Object.assign(params, mobileParams)
+
     } else {
       const desktopParams = {
         pagination: true,

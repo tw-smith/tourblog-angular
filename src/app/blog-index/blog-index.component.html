@@ -4,7 +4,8 @@
                       isHandsetLandscape ? 'blog-cover-mobile-landscape' : 
                       'blog-cover'" *ngFor="let post of posts" routerLink="/post/{{post.slug}}">
             <img src="{{this.apiUrl}}{{post.coverPhoto}}">
-            <div class="overlay">
+            <div [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'overlay--mobile' : 
+            'overlay'">
                 <div class="overlay__text">
                     <h2 class="overlay__text_header">{{post.title}}</h2>
                     <h3 class="overlay__text_subheader">{{formatDate(post.displayDate)}}</h3>

@@ -68,11 +68,9 @@
     transition: all 0.5s ease-in-out
 }
 
-.gallery__item:hover + .expandIcon {
+/* .gallery__item:hover + .expandIcon {
     transform: translate(-50px,50px);
-    /* top: 2%;
-    right: 2%; */
-}
+} */
 .swiper-slide-active img {
     display: block;
     height: 100%;
