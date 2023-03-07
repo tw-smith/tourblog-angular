@@ -45,7 +45,7 @@ body {
 
 /* CSS Variables */
 :root {
-    --main-theme-background-colour: #ffffef;
+    --main-theme-background-colour: #e2e2c8;
     background-color: var(--main-theme-background-colour);
     --menu-text-colour: grey;
     --menu-text-hover-colour: black;
