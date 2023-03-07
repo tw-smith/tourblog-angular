@@ -63,16 +63,19 @@
     height: 30px;
     width: 30px;
     position: absolute;
-    top: -40px;
-    right: -40px;
-    transition: all 0.5s ease-in-out
+    top: 2%;
+    right: 2%;
+    opacity: 0;
+    transition: opacity 0.5s
 }
 
-.gallery__item:hover + .expandIcon {
-    transform: translate(-50px,50px);
-    /* top: 2%;
-    right: 2%; */
+.expandIcon--visible {
+    opacity: 1;
 }
+
+/* .gallery__item:hover + .expandIcon {
+    transform: translate(-50px,50px);
+} */
 .swiper-slide-active img {
     display: block;
     height: 100%;

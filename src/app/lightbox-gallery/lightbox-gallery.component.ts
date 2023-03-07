@@ -14,6 +14,7 @@ Swiper.use([Navigation, EffectFade])
 
 
 import { NgFor } from '@angular/common';
+import { expand } from 'rxjs';
 
 @Component({
   selector: 'app-lightbox-gallery',
@@ -59,10 +60,22 @@ export class LightboxGalleryComponent {
 
     this.initPreviewSwiper()
     this.initModalSwiper()
+    // this.addPhotoEventListeners()
   }
 
+  // addPhotoEventListeners() {
+  //   // add expand icon event listener
+  //   const galleryElements = document.querySelectorAll('.gallery__item-wrapper');
+  //   console.log(galleryElements)
+  //   galleryElements.forEach(element => {
+  //     element.addEventListener("touchstart", function() {
+  //       console.log("image touch")
+  //     })
+  //   })
+  // }
 
   initPreviewSwiper() {
+    console.log("in preview swiper init")
     const params = {
       slidesPerView: 1,
       loop: false,
@@ -76,9 +89,9 @@ export class LightboxGalleryComponent {
         pagination: {
           dynamicBullets: true,
         },
-        navigation: false,
       }
       Object.assign(params, mobileParams)
+
     } else {
       const desktopParams = {
         pagination: true,
@@ -88,13 +101,27 @@ export class LightboxGalleryComponent {
     }
     Object.assign(this.previewSwiperEl, params);
     this.previewSwiperEl.initialize();
+    // const swiperSlides = document.querySelectorAll('swiper-slide');
+    // console.log(swiperSlides)
+    // this.previewSwiperEl.addEventListener('tap', (event: Event) => {
+
+    //   const swiperElement = event.currentTarget as HTMLElement;
+    //   const expandIconElement = swiperElement.querySelector('#expandIcon')
+    //   // const expandIconElement = swiperElement.lastElementChild;
+    //   console.log(expandIconElement)
+    //   expandIconElement?.classList.toggle('expandIcon--visible')
+    //   console.log("slide tap")})
+
+
+
+
   }
 
   initModalSwiper() {
     const params = {
       initialSlide: 0,
       enabled: false,
-      navigation: true,
+      navigation: false,
       pagination: true,
       slidesPerView: 1,
       loop: false,
