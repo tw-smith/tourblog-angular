@@ -1,10 +1,10 @@
-.blog-covers {
+.index {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.blog-cover {
+.cover {
     position: relative;
     width: 25vw;
     height: 16.67vw;
@@ -12,33 +12,33 @@
     overflow: hidden;
 }
 
-.blog-cover-mobile {
+.cover--mobile {
     position: relative;
     width:100vw;
     height: 66.67vw;
     overflow:hidden;
 }
 
-.blog-cover-mobile-landscape {
+.cover--mobile-landscape {
     position: relative;
     width: 50vw;
     height: 33.33vw;
     overflow: hidden;
 }
 
-.blog-cover-mobile-landscape img {
+.cover--mobile-landscape img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
     object-fit: cover;
 }
 
-.blog-cover-mobile img {
+.cover--mobile img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
     object-fit: cover;
 }
 
-.blog-cover img {
+.cover img {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
     object-fit: cover;
@@ -69,19 +69,19 @@
     top: 10px;
 }
 
-.overlay__text_header {
+.overlay__text-header {
     color: white;
     font-weight: 800;
     margin: 0;
 }
 
-.overlay__text_subheader {
+.overlay__text-subheader {
     color: white;
     font-weight: 400;
     margin: 0;
 }
 
-.blog-cover:hover .overlay {
+.cover:hover .overlay {
     visibility: visible;
     opacity: 1;
 }

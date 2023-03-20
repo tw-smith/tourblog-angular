@@ -5,7 +5,8 @@
     <swiper-container id="swiper1" class="previewGallery">
         <swiper-slide class="gallery__item-wrapper" *ngFor="let photo of photos">
 
-                <img class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.large.url}}">
+                <img *ngIf="isWebLandscape" class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.xlarge.url}}">
+                <img *ngIf="isHandsetPortrait || isHandsetLandscape" class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.large.url}}">
                     <div id="expandIcon" *ngIf="this.isHandsetPortrait || isHandsetLandscape" class="expandIcon expandIcon--visible" (click)="goToModalView()">
                         <img src="assets/icons8-expand-32.png">
                     </div>

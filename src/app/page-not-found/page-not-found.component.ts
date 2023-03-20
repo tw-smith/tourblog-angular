@@ -13,15 +13,14 @@ export class PageNotFoundComponent {
   splashURL: string = ''
   apiUrl: string = ''
 
-  getSplashURL(): void {
-    this.splashImageService.getSplashURL().subscribe(resp => {
-      this.splashURL = resp.splashURL
-    })
-  }
-
   ngOnInit(): void {
     this.apiUrl = environment.apiUrl;
     this.getSplashURL()
   }
 
+  getSplashURL(): void {
+    this.splashImageService.getSplashURL().subscribe(resp => {
+      this.splashURL = resp.splashURL
+    })
+  }
 }
