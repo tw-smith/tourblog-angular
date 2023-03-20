@@ -1,13 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { BlogIndexService } from '../blog-index.service';
 import { PostIndexItem } from '../post';
- import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
-import { distinctUntilChanged, Observable } from 'rxjs';
+import { Breakpoints } from '@angular/cdk/layout';
 import { ResponsiveService } from '../responsive.service';
-import { tap } from 'rxjs';
-
-
-
 
 @Component({
   selector: 'app-navbar',
@@ -19,21 +14,17 @@ export class NavbarComponent {
               private responsiveService: ResponsiveService) {}
   @Input() siteTitle!: string;
 
-
   posts: PostIndexItem[] = [];
   tags: string[] = [];
   mobileNavModal = false;
+  Breakpoints = Breakpoints;
+  currentBreakpoint: string = '';
+  isHandsetPortrait: boolean = false;
+  isHandsetLandscape: boolean = false;
+  isTablet: boolean = false;
+  isWebLandscape: boolean = true;
 
-
-   Breakpoints = Breakpoints;
-   currentBreakpoint: string = '';
-   isHandsetPortrait: boolean = false;
-   isHandsetLandscape: boolean = false;
-   isTablet: boolean = false;
-   isWebLandscape: boolean = true;
-
-
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.responsiveService.breakpointChanged().subscribe((state) => {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
       this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
@@ -43,7 +34,6 @@ export class NavbarComponent {
     this.getPosts();
   }
 
-
   get categoryTags() {
     if (this.posts) {
       return [...new Set(this.posts.map(({tag}) => tag))];
@@ -52,33 +42,27 @@ export class NavbarComponent {
     }
   }
 
-   getPosts(): void { //TODO at the moment we make two API calls for post-index, one for navbar tags 
-                      // and one for post mosaic view. Surely we can share the data and only make one API call?
+  getPosts(): void { //TODO at the moment we make two API calls for post-index, one for navbar tags 
+                    // and one for post mosaic view. Surely we can share the data and only make one API call?
     this.blogIndexService.getPostIndex('all').subscribe(resp => {
-
-
       resp.sort(function(a,b) {
         return a.displayDate.localeCompare(b.displayDate)
       })
-      
       this.posts = resp;
-     })
-   }
+    })
+  }
 
+  getTags(): void {
+    this.tags = [...new Set(this.posts.map(({tag}) => tag))];
+  }
 
-   getTags(): void {
-      this.tags = [...new Set(this.posts.map(({tag}) => tag))];
-   }
+  showMobileNavModal(): void {
+    this.mobileNavModal = true;
+    let mobileNavModalIcon = document.getElementById("mobileNavModalIcon") as HTMLImageElement
+  }
 
-
-   showMobileNavModal(): void {
-      this.mobileNavModal = true;
-      let mobileNavModalIcon = document.getElementById("mobileNavModalIcon") as HTMLImageElement
-   }
-
-   hideMobileNavModal(): void {
+  hideMobileNavModal(): void {
     this.mobileNavModal = false;
     let mobileNavModalIcon = document.getElementById("mobileNavModalIcon") as HTMLImageElement
-   }
-
+  }
 }

@@ -10,6 +10,7 @@ import { Breakpoints } from '@angular/cdk/layout';
   templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.css']
 })
+
 export class BlogPostComponent {
   constructor(
     private route: ActivatedRoute,
@@ -17,7 +18,6 @@ export class BlogPostComponent {
     private responsiveService: ResponsiveService) {}
 
   post: Post[] = [];
-
   Breakpoints = Breakpoints;
   currentBreakpoint: string = '';
   isHandsetPortrait: boolean = false;
@@ -26,7 +26,6 @@ export class BlogPostComponent {
   isWebLandscape: boolean = true;
 
   ngOnInit(): void {
-
     this.responsiveService.breakpointChanged().subscribe((state) => {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
       this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
@@ -38,7 +37,7 @@ export class BlogPostComponent {
   }
 
   get postTitle() {
-    return (this.post && this.post[0].title) ? this.post[0].title : null
+    return (this.post[0] && this.post[0].title) ? this.post[0].title : null
   }
 
   get postSubTitle() {
@@ -67,6 +66,5 @@ export class BlogPostComponent {
       const b_index = b.url.match(regex).shift();
       return a_index - b_index;
     })
-
   }
 }

@@ -10,16 +10,13 @@ export class ContentFooterComponent {
   constructor(private router: Router) {}
 
   currentURL: string = ''
-
-
+  
   ngOnInit() {
-
     this.router.events.subscribe((event: Event) => {    
       if (event instanceof NavigationEnd) {
         console.log(event.url)
         this.currentURL = event.url
       }
-  })
-
-
-}}
+    })
+  }
+}
