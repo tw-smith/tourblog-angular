@@ -76,12 +76,21 @@
 /* .gallery__item:hover + .expandIcon {
     transform: translate(-50px,50px);
 } */
+
+/* .gallery__item {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}  */
+
+
 .swiper-slide-active img {
     display: block;
     height: 100%;
     max-width: 100%;
     object-fit: contain;
-}
+} 
 
 .previewImageContainer {
     height: 100%;

@@ -4,15 +4,11 @@
 <div [hidden]="!previewSwiperOn" [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'gallery-wrapper-mobile' : 'gallery-wrapper'">
     <swiper-container id="swiper1" class="previewGallery">
         <swiper-slide class="gallery__item-wrapper" *ngFor="let photo of photos">
-
-                <img *ngIf="isWebLandscape" class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.xlarge.url}}">
-                <img *ngIf="isHandsetPortrait || isHandsetLandscape" class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.large.url}}">
-                    <div id="expandIcon" *ngIf="this.isHandsetPortrait || isHandsetLandscape" class="expandIcon expandIcon--visible" (click)="goToModalView()">
-                        <img src="assets/icons8-expand-32.png">
-                    </div>
- 
-
-                
+            <img *ngIf="isWebLandscape" class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.xlarge.url}}" (click)="goToModalView()">
+            <img *ngIf="isHandsetPortrait || isHandsetLandscape" class="gallery__item" id="gallery__item" src="{{apiUrl}}{{photo.formats.large.url}}">
+            <div id="expandIcon" *ngIf="this.isHandsetPortrait || isHandsetLandscape" class="expandIcon expandIcon--visible" (click)="goToModalView()">
+                <img src="assets/icons8-expand-32.png">
+            </div>
         </swiper-slide>
     </swiper-container>
 
@@ -26,7 +22,8 @@
         <swiper-container id="swiper2">
             <swiper-slide *ngFor="let photo of photos">
                 <div class="modalImageContainer">
-                    <img src="{{apiUrl}}{{photo.url}}">
+                    <img *ngIf="isWebLandscape" src="{{apiUrl}}{{photo.formats.xlarge.url}}">
+                    <img *ngIf="isHandsetLandscape || isHandsetPortrait" src="{{apiUrl}}{{photo.formats.large.url}}">
                     <div class="modalImageOverlay">
                         <p class="modalImageCaption">{{photo.caption}}</p>
                     </div>
