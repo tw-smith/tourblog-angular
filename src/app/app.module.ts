@@ -15,7 +15,9 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { FormsModule } from '@angular/forms';
 import { ContentFooterComponent } from './content-footer/content-footer.component';
 
-import { LayoutModule } from "@angular/cdk/layout"
+import { LayoutModule } from "@angular/cdk/layout";
+import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
+import { NgxMatomoRouterModule } from '@ngx-matomo/router'
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { LayoutModule } from "@angular/cdk/layout"
     HttpClientModule,
     FormsModule,
     LayoutModule,
+    NgxMatomoTrackerModule.forRoot({ trackerUrl: 'matomo.cycling-south.com', siteId: '1' }),
+    NgxMatomoRouterModule,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
