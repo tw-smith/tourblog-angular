@@ -37,7 +37,7 @@ import { NgxMatomoRouterModule } from '@ngx-matomo/router'
     HttpClientModule,
     FormsModule,
     LayoutModule,
-    NgxMatomoTrackerModule.forRoot({ trackerUrl: 'matomo.cycling-south.com', siteId: '1' }),
+    NgxMatomoTrackerModule.forRoot({ trackerUrl: 'https://matomo.cycling-south.com', siteId: '1' }),
     NgxMatomoRouterModule,
   ],
   providers: [],
