@@ -5,6 +5,7 @@ import { BlogIndexComponent } from './blog-index/blog-index.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WhereAmIComponent } from './where-am-i/where-am-i.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'posts/all', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'posts/:tag', component: BlogIndexComponent},
   { path: 'contact', component: ContactMeComponent},
   { path: 'where-am-i', component: WhereAmIComponent},
+  { path: 'subscribe', component: SubscribeComponent},
   { path: '404', component: PageNotFoundComponent},
   { path: '**', redirectTo: '/404'},
 ];

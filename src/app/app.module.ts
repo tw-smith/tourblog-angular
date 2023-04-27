@@ -15,7 +15,8 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { FormsModule } from '@angular/forms';
 import { ContentFooterComponent } from './content-footer/content-footer.component';
 
-import { LayoutModule } from "@angular/cdk/layout"
+import { LayoutModule } from "@angular/cdk/layout";
+import { SubscribeComponent } from './subscribe/subscribe.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LayoutModule } from "@angular/cdk/layout"
     WhereAmIComponent,
     ContactMeComponent,
     ContentFooterComponent,
+    SubscribeComponent,
   ],
   imports: [
     BrowserModule,
