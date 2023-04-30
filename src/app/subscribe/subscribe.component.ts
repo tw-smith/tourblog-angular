@@ -21,8 +21,9 @@ export class SubscribeComponent {
   isHandsetPortrait: boolean = false;
   isHandsetLandscape: boolean = false;
   isWebLandscape: boolean = true;
-  model = new SubscribeFormEntry('')
+  model = new SubscribeFormEntry('', '', '')
   submitted = false;
+  msg: any = '';
   
   ngOnInit(): void {
     this.responsiveService.breakpointChanged().subscribe((state) => {
@@ -32,10 +33,15 @@ export class SubscribeComponent {
     })
   }
 
-  onSubmit(form: NgForm): void {
-    this.formSubmitService.submitSubscribeForm(form.value).subscribe(resp => {
-      console.log(resp)
+  onSubmit(form: NgForm) {
+    this.msg = this.formSubmitService.submitSubscribeForm(form.value).subscribe({
+        next() {
+          return 'You have subscribed'
+        },
+        error(err) {
+          console.log(err)
+          return err.msg
+        }
     })
-    this.submitted = true
   }
 }
