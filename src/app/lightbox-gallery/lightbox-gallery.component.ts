@@ -136,7 +136,7 @@ export class LightboxGalleryComponent {
   goToPreviewView() {
     this.modalSwiperEl.enabled = false;
     this.previewSwiperEl.enabled = true;
-    this.previewSwiperEl.swiper.slideTo(this.modalSwiperEl.swiper.activeIndex)
+    this.previewSwiperEl.swiper.slideTo(this.modalSwiperEl.swiper.activeIndex, 0)
     this.modalSwiperOn = false;
     document.getElementsByTagName("body")[0].classList.remove("disabled-scroll") 
   }
@@ -144,7 +144,7 @@ export class LightboxGalleryComponent {
   goToModalView() {
     this.previewSwiperEl.enabled = false;
     this.modalSwiperEl.enabled = true;
-    this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex);
+    this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex, 0);
     this.modalSwiperOn = true;
     const targetElement = document.getElementById("gallery__item") as HTMLImageElement
     if (!targetElement) {
