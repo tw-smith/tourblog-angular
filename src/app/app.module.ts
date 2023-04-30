@@ -16,8 +16,12 @@ import { FormsModule } from '@angular/forms';
 import { ContentFooterComponent } from './content-footer/content-footer.component';
 
 import { LayoutModule } from "@angular/cdk/layout";
+
+import { SubscribeComponent } from './subscribe/subscribe.component'
+
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router'
+
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { NgxMatomoRouterModule } from '@ngx-matomo/router'
     WhereAmIComponent,
     ContactMeComponent,
     ContentFooterComponent,
+    SubscribeComponent,
   ],
   imports: [
     BrowserModule,

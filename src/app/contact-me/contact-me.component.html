@@ -12,7 +12,7 @@
         <div class="form__group">
             <label for="email">Email</label>
             <!-- FIXME HTML5 email validator isn't working - lets non valid email addresses through -->
-            <input type="email" id="email" class="form__item" placeholder="Email address" [(ngModel)]="model.email" name="email" #email="ngModel">
+            <input type="email" id="email" class="form__item" placeholder="Email address" required [(ngModel)]="model.email" name="email" #email="ngModel">
             <div [hidden]="email.valid || email.pristine" class="alert">
                 Please enter a valid email address.
             </div>

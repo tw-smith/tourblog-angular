@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { LocationStrategy } from '@angular/common';
 import { Photo } from '../post';
 import { environment } from 'src/environments/environment';
 // import { SwiperComponent } from 'swiper/angular';
@@ -6,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { register } from 'swiper/element/bundle'
 
 import { ResponsiveService } from '../responsive.service';
+import { PinchZoomService } from '../pinch-zoom.service';
 import { Breakpoints } from '@angular/cdk/layout';
 
 import SwiperCore, { SwiperOptions, Navigation, Swiper, EffectFade } from 'swiper';
@@ -23,7 +25,9 @@ import { expand } from 'rxjs';
   encapsulation: ViewEncapsulation.None //TODO why do we need this to make slider work?
 })
 export class LightboxGalleryComponent {
-  constructor(private responsiveService: ResponsiveService) {}
+  constructor(private responsiveService: ResponsiveService,
+              private location: LocationStrategy,
+              private pinchZoom: PinchZoomService) {}
 
   apiUrl: string = '';
 
@@ -137,6 +141,21 @@ export class LightboxGalleryComponent {
     this.modalSwiperEl.enabled = true;
     this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex);
     this.modalSwiperOn = true;
+    const targetElement = document.getElementById("gallery__item") as HTMLImageElement
+    if (!targetElement) {
+      throw new Error("The element #gallery__item wasn't found")
+    }
+    if (targetElement.nodeName !== 'IMG') {
+      throw new Error("The element type for #gallery__item is not img")
+    }
+    this.pinchZoom.initPinchZoom(targetElement)
+    // Override browser navigation when modal window is open to close modal
+    // window rather than navigating to a new page.
+    history.pushState(null, '', window.location.href)
+    this.location.onPopState(() => {                    
+      history.pushState(null, '', window.location.href);
+      this.goToPreviewView()
+    })
     document.getElementsByTagName("body")[0].classList.add("disabled-scroll")
 
   }
