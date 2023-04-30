@@ -23,9 +23,9 @@
                 <li  class="navbar__list pointer icon">
                     <a href="https://www.instagram.com/toby.s91"><img class="navbar__entry" src="assets/Instagram_Glyph_Black.png"></a>
                 </li>
-                <li class="navbar__list pointer icon">
+                <!-- <li class="navbar__list pointer icon">
                     <img routerLink="/subscribe" class="navbar__entry" src="assets/icons8-subscription-50.png">
-                </li>
+                </li> -->
             </ng-container>
             <ng-container *ngIf="isHandsetPortrait || isHandsetLandscape || isTablet">
                 <li  class="navbar__list pointer icon"(click)="showMobileNavModal()">
@@ -53,7 +53,7 @@
             <li class="navbar__list icon icon--mobile">
                 <a href="https://www.youtube.com/@cycling-south"><img src="assets/yt_icon_mono_light.png"></a>
                 <a href="https://www.instagram.com/toby.s91"><img src="assets/Instagram_Glyph_Black.png"></a>
-                <img routerLink="/subscribe" src="assets/icons8-subscription-50.png">
+                <!-- <img class="pointer" routerLink="/subscribe" src="assets/icons8-subscription-50.png" (click)="hideMobileNavModal()"> -->
             </li>
         </ul>
     </div>
