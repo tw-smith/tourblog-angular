@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { LocationStrategy } from '@angular/common';
 import { Photo } from '../post';
 import { environment } from 'src/environments/environment';
 // import { SwiperComponent } from 'swiper/angular';
@@ -23,7 +24,8 @@ import { expand } from 'rxjs';
   encapsulation: ViewEncapsulation.None //TODO why do we need this to make slider work?
 })
 export class LightboxGalleryComponent {
-  constructor(private responsiveService: ResponsiveService) {}
+  constructor(private responsiveService: ResponsiveService,
+              private location: LocationStrategy) {}
 
   apiUrl: string = '';
 
@@ -137,6 +139,13 @@ export class LightboxGalleryComponent {
     this.modalSwiperEl.enabled = true;
     this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex);
     this.modalSwiperOn = true;
+    // Override browser navigation when modal window is open to close modal
+    // window rather than navigating to a new page.
+    history.pushState(null, '', window.location.href)
+    this.location.onPopState(() => {                    
+      history.pushState(null, '', window.location.href);
+      this.goToPreviewView()
+    })
     document.getElementsByTagName("body")[0].classList.add("disabled-scroll")
 
   }
