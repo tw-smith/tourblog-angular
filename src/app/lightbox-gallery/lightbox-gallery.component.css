@@ -68,9 +68,14 @@
 }
 
 .swiper-slide-prev img {
-    height: fit-content;
+    /* height: fit-content;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
+
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .swiper-slide-next {
@@ -80,9 +85,14 @@
 }
 
 .swiper-slide-next img {
-    height: fit-content;
+    /* height: fit-content;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
+
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;    
 }
 
 .expandIcon {
