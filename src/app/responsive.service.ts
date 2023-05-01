@@ -15,7 +15,7 @@ export class ResponsiveService {
 
   breakpointChanged(): Observable<BreakpointState> {
     return this.breakpointObserver
-    .observe([Breakpoints.WebLandscape, 
+    .observe([Breakpoints.Web, 
               Breakpoints.HandsetPortrait,
               Breakpoints.HandsetLandscape,
               Breakpoints.TabletPortrait,

@@ -1,10 +1,11 @@
 <div class="index">
     <!-- TODO: change these HTML interpolations to getters? -->
         <a [ngClass]="isHandsetPortrait ? 'cover cover--mobile' : 
-                      isHandsetLandscape ? 'cover cover--mobile-landscape' : 
+                      isHandsetLandscape ? 'cover cover--mobile-landscape' :
+                      isTabletPortrait ? 'cover cover--mobile-landscape' : 
                       'cover'" *ngFor="let post of posts" routerLink="/post/{{post.slug}}">
             <img src="{{this.apiUrl}}{{post.coverPhoto}}">
-            <div [ngClass]="isHandsetPortrait || isHandsetLandscape ? 'overlay--mobile' : 
+            <div [ngClass]="isHandsetPortrait || isHandsetLandscape || isTabletPortrait ? 'overlay--mobile' : 
             'overlay'">
                 <div class="overlay__text">
                     <h2 class="overlay__text-header">{{post.title}}</h2>
