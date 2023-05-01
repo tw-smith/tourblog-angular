@@ -23,6 +23,7 @@ export class BlogIndexComponent {
   currentBreakpoint: string = '';
   isHandsetPortrait: boolean = false;
   isHandsetLandscape: boolean = false;
+  isTabletPortrait: boolean = false;
   isWebLandscape: boolean = true;
   apiUrl: string = '';
   posts: PostIndexItem[] = [];
@@ -33,6 +34,7 @@ export class BlogIndexComponent {
     this.responsiveService.breakpointChanged().subscribe((state) => {
     this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
     this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
+    this.isTabletPortrait = state.breakpoints[Breakpoints.TabletPortrait]
     this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape]
     })
     this.getPosts();
