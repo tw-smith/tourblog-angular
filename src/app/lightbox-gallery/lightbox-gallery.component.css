@@ -59,6 +59,32 @@
     align-items: center;
 }
 
+
+
+.swiper-slide-prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide-prev img {
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slide-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide-next img {
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .expandIcon {
     height: 30px;
     width: 30px;

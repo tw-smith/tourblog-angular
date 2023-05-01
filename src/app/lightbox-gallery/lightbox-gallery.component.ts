@@ -50,13 +50,10 @@ export class LightboxGalleryComponent {
       this.apiUrl = environment.apiUrl;
       this.previewSwiperEl = document.getElementById("swiper1");
       this.modalSwiperEl = document.getElementById("swiper2");
-
       this.responsiveService.breakpointChanged().subscribe((state) => {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
       this.isHandsetLandscape = state.breakpoints[Breakpoints.HandsetLandscape];
       this.isWebLandscape = state.breakpoints[Breakpoints.WebLandscape];
-      
-
     })
 
 
@@ -64,6 +61,7 @@ export class LightboxGalleryComponent {
 
     this.initPreviewSwiper()
     this.initModalSwiper()
+    
     // this.addPhotoEventListeners()
   }
 
@@ -135,11 +133,18 @@ export class LightboxGalleryComponent {
     this.modalSwiperEl.initialize();
   }
 
+  goToPreviewView() {
+    this.modalSwiperEl.enabled = false;
+    this.previewSwiperEl.enabled = true;
+    this.previewSwiperEl.swiper.slideTo(this.modalSwiperEl.swiper.activeIndex, 0)
+    this.modalSwiperOn = false;
+    document.getElementsByTagName("body")[0].classList.remove("disabled-scroll") 
+  }
 
   goToModalView() {
     this.previewSwiperEl.enabled = false;
     this.modalSwiperEl.enabled = true;
-    this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex);
+    this.modalSwiperEl.swiper.slideTo(this.previewSwiperEl.swiper.activeIndex, 0);
     this.modalSwiperOn = true;
     const targetElement = document.getElementById("gallery__item") as HTMLImageElement
     if (!targetElement) {
@@ -152,20 +157,23 @@ export class LightboxGalleryComponent {
     // Override browser navigation when modal window is open to close modal
     // window rather than navigating to a new page.
     history.pushState(null, '', window.location.href)
-    this.location.onPopState(() => {                    
-      history.pushState(null, '', window.location.href);
-      this.goToPreviewView()
-    })
+   
+    let foo = () => {     
+      console.log("arrow function popstate event")
+      // history.pushState(null, '', window.location.href);
+      if (this.modalSwiperEl.enabled) {
+        history.pushState(null, '', window.location.href);
+        this.goToPreviewView()
+      }
+      if (this.previewSwiperEl.enabled) {
+        window.removeEventListener('popstate', foo)
+        history.go(-1)
+        // history.back()
+        // history.back()
+      }             
+    }
+    window.addEventListener('popstate', foo)
+
     document.getElementsByTagName("body")[0].classList.add("disabled-scroll")
-
   }
-
-  goToPreviewView() {
-    this.modalSwiperEl.enabled = false;
-    this.previewSwiperEl.enabled = true;
-    this.previewSwiperEl.swiper.slideTo(this.modalSwiperEl.swiper.activeIndex)
-    this.modalSwiperOn = false;
-    document.getElementsByTagName("body")[0].classList.remove("disabled-scroll") 
-  }
-
 }
