@@ -10,10 +10,30 @@
             </div>
         </div>
         <div class="form__group">
-            <button type="submit" class="form__item" [disabled]="!subscribeForm.form.valid">Submit</button>
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form__item" placeholder="Password"
+                 required minlength="8" [(ngModel)]="model.password" name="password" #password="ngModel">
+          <div [hidden]="password.valid || password.pristine" class="alert">
+            Please enter a password
+          </div>
+          <div *ngIf="password.errors?.['minlength']" class="alert">
+            Password must be at least 8 characters.
+          </div>
+        </div>
+
+        <div class="form__group">
+          <label for="repeatPassword">Repeat Password</label>
+          <input type="password" id="repeatPassword" class="form__item" placeholder="Repeat password"
+                 required minlength="8" [(ngModel)]="model.repeatPassword" name="repeatPassword" #repeatPassword="ngModel">
+          <div [hidden]="repeatPassword.valid || repeatPassword.pristine" class="alert">
+            Passwords must match  <!-- TODO implement password matching validation -->
+          </div>
+        </div>
+      <div class="form__group">
+            <button type="submit" class="form__item" [disabled]="!subscribeForm.form.valid">Subscribe</button>
         </div>
     </form>
 </div>
 <div [hidden]="!submitted">
-    <h2 class="form__group">You are now subscribed!</h2>
+    <h2 class="form__group">Please click on the link in your email to validate your subscription.</h2>
 </div>

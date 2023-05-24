@@ -4,6 +4,7 @@ import { ContactFormEntry } from '../contact-entry';
 import { FormSubmitService } from '../form-submit.service';
 import { ResponsiveService } from '../responsive.service';
 import { Breakpoints } from '@angular/cdk/layout';
+import {of} from 'rxjs'
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ContactMeComponent {
   isWebLandscape: boolean = true;
   model = new ContactFormEntry('', '', '')
   submitted = false;
+  msg = ''
 
   ngOnInit(): void {
     this.responsiveService.breakpointChanged().subscribe((state) => {
@@ -34,11 +36,18 @@ export class ContactMeComponent {
     })
   }
 
-  onSubmit(form: NgForm): void {
-    this.formSubmitService.submitContactForm(form.value).subscribe(resp => {
-      console.log(resp)
+  onSubmit(form: NgForm): any {
+
+    this.msg = this.formSubmitService.submitContactForm(form.value).subscribe({
+      next(resp) {
+        console.log(resp)
+        return of('Success!')
+      },
+      error(err) {
+        console.log(err)
+        return 'Error!'
+      }
     })
-    this.submitted = true
   }
 }
 

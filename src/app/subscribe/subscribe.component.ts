@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormSubmitService } from '../form-submit.service';
 import { ResponsiveService } from '../responsive.service';
 import { Breakpoints } from '@angular/cdk/layout';
-import { SubscribeFormEntry } from '../subscribe-entry';
+import {SubscribeFormEntry, SubscribeResponse} from '../subscribe-entry';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -21,9 +21,10 @@ export class SubscribeComponent {
   isHandsetPortrait: boolean = false;
   isHandsetLandscape: boolean = false;
   isWebLandscape: boolean = true;
-  model = new SubscribeFormEntry('')
+  model = new SubscribeFormEntry('', '', '')
   submitted = false;
-  
+  msg: string = '';
+
   ngOnInit(): void {
     this.responsiveService.breakpointChanged().subscribe((state) => {
       this.isHandsetPortrait = state.breakpoints[Breakpoints.HandsetPortrait];
@@ -32,10 +33,16 @@ export class SubscribeComponent {
     })
   }
 
-  onSubmit(form: NgForm): void {
-    this.formSubmitService.submitSubscribeForm(form.value).subscribe(resp => {
-      console.log(resp)
+  onSubmit(form: NgForm) {
+    let resp: any = this.formSubmitService.submitSubscribeForm(form.value).subscribe({
+      next() {
+        console.log(resp)
+        return resp
+      },
+      error(err) {
+        console.log(err)
+        return err.msg
+      }
     })
-    this.submitted = true
   }
 }
